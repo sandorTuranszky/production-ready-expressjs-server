@@ -1,0 +1,6 @@
+# docker-compose -f docker-compose.yml -f test-env.yml up
+version: '3'
+services:
+  api:
+    environment:
+      NODE_ENV: test

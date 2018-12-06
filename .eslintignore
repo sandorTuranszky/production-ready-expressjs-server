@@ -1,0 +1,6 @@
+/.git
+/.vscode
+bin
+logs
+coverage
+node_modules

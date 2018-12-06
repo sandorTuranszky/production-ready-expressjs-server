@@ -1,0 +1,10 @@
+# docker-compose -f docker-compose.yml -f debug.yml up
+version: '3'
+services:
+  api:
+    ports:
+      - '9229:9229'
+    command:
+      - node
+      - '--inspect-brk=0.0.0.0'
+      - '.'
