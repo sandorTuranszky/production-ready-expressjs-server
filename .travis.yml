@@ -11,8 +11,8 @@ before_install:
   - docker build -t server/express-test -f ./Dockerfile.dev .
 
 script:
-  - docker run server/express npm run test:unit
-  - docker run server/express npm run test:int
+  - docker run server/express-test npm run test:unit
+  - docker run server/express-test npm run test:int
 
 after_success:
   - docker build -t server/express .
