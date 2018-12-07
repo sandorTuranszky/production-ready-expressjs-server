@@ -8,6 +8,7 @@ services:
   - docker
 
 before_install:
+  - mv ./config/test.sample.js ./config/test.js
   - docker build -t server/express-test -f ./Dockerfile.dev .
 
 script:
