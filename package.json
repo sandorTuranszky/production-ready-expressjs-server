@@ -1,5 +1,5 @@
 {
-  "name": "react-express-docker-starter-server",
+  "name": "production-ready-expressjs-server",
   "version": "1.0.0",
   "engines": {
     "node": ">=8.12.0"
