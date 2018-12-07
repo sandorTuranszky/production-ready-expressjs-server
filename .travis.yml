@@ -22,7 +22,7 @@ before_install:
 script:
   - docker run server/express-test npm run test:unit
   - docker run server/express-test npm run test:int
-  - npm run coverage
+  - docker run server/express-test npm run coverage
   - codecov
 
 after_success:
