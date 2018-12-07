@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/sandorTuranszky/production-ready-expressjs-server.svg?branch=master)](https://travis-ci.org/sandorTuranszky/production-ready-expressjs-server)
+
+![Build Status](https://img.shields.io/github/license/sandorTuranszky/production-ready-expressjs-server.svg)
+
 This is an [Express.js](https://github.com/Automattic/kue) based Nodejs server that implements production-ready error handling and logging following latest best practices.
 
 This is a backend server for my project that is COMING SOON. It inspired by an idea to quickly create a production ready project with all the required infrastructure at low cost yet with important security measures in place and ability to quickly scale in order to ship a quality product to early adopters. Ideal for quickly starting an app to validate ideas and scale if needed.
