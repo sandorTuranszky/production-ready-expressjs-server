@@ -11,8 +11,8 @@
   "scripts": {
     "dev": "nodemon ./bin/www",
     "start": "node index.js",
-    "test:unit": "jest tests/unit",
-    "test:int": "jest tests/int",
+    "test:unit": "set NODE_ENV=test && jest tests/unit",
+    "test:int": "set NODE_ENV=test && jest tests/int",
     "coverage": "jest --collectCoverageFrom=src/**.js --coverage tests",
     "lint": "eslint .",
     "lint:write": "eslint --debug . --fix"
