@@ -11,6 +11,7 @@ env:
   - NODE_ENV=test  
 
 before_install:
+  - mv ./config/default.sample.js ./config/default.js
   - mv ./config/test.sample.js ./config/test.js
   - docker build -t server/express-test -f ./Dockerfile.dev .
 
