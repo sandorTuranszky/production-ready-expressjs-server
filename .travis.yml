@@ -7,6 +7,9 @@ node_js:
 services: 
   - docker
 
+env:
+  - NODE_ENV=test  
+
 before_install:
   - mv ./config/test.sample.js ./config/test.js
   - docker build -t server/express-test -f ./Dockerfile.dev .
