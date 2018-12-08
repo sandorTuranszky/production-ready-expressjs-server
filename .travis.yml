@@ -11,16 +11,20 @@ services:
 env:
   - NODE_ENV=test  
 
+install:
+  - npm install -g codecov
+
 before_install:
   - mv ./config/default.sample.js ./config/default.js
   - mv ./config/test.sample.js ./config/test.js
   - docker build -t server/express-test -f ./Dockerfile.dev .
+  - ci_env=`bash <(curl -s https://codecov.io/env)`
 
 script:
   - docker run server/express-test npm run test:unit
   - docker run server/express-test npm run test:int
   - docker run server/express-test npm run coverage
-  - docker run server/express-test npm run codecov:run
+  - docker run $ci_env
 
 after_success:
   - docker build -t server/express .
