@@ -14,6 +14,7 @@
     "test:unit": "set NODE_ENV=test && jest tests/unit",
     "test:int": "set NODE_ENV=test && jest tests/int",
     "coverage": "jest --collectCoverageFrom=src/**.js --coverage tests",
+    "codecov:run": "codecov",
     "lint": "eslint .",
     "lint:write": "eslint --debug . --fix"
   },
