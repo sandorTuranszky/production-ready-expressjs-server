@@ -23,7 +23,7 @@ script:
   - docker run server/express-test npm run test:unit
   - docker run server/express-test npm run test:int
   - docker run server/express-test npm run coverage
-  - codecov
+  - docker run server/express-test npm run codecov:run
 
 after_success:
   - docker build -t server/express .
