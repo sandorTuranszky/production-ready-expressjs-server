@@ -1,6 +1,7 @@
 [![Build Status](https://travis-ci.org/sandorTuranszky/production-ready-expressjs-server.svg?branch=master)](https://travis-ci.org/sandorTuranszky/production-ready-expressjs-server)
 [![Known Vulnerabilities](https://snyk.io/test/github/sandorTuranszky/production-ready-expressjs-server/badge.svg)](https://snyk.io/test/github/{username}/{repo})
-![Build Status](https://img.shields.io/github/license/sandorTuranszky/production-ready-expressjs-server.svg)
+[![codecov.io](https://codecov.io/github/sandorTuranszky/production-ready-expressjs-server/coverage.svg?branch=master)](https://codecov.io/github/sandorTuranszky/production-ready-expressjs-server?branch=master)
+![License](https://img.shields.io/github/license/sandorTuranszky/production-ready-expressjs-server.svg)
 
 This is an [Express.js](https://github.com/Automattic/kue) based Nodejs server that implements production-ready error handling and logging following latest best practices.
 
