@@ -9,13 +9,14 @@ This is a backend server for my project that is COMING SOON. It inspired by an i
 
 ## Features
 
-- Nodejs v. 10.\*
-- Error handling v1.0.0
+- Nodejs `v. 10.\*`
+- Error handling `v1.0.0`
 - Logging with Morgan and Winston
 - Application Configuration with <a href="https://github.com/lorenwest/node-config" target="_blank">node-config</a>
 - Linting
 - Testing with Jets and Supertest
-- MongodDb with Mongoose v1.1.0
+- MongodDb support with Mongoose `v1.1.0`
+- Redis support `v1.2.0`
 - Follows best practices from <a href="https://github.com/i0natan/nodebestpractices" target="_blank">The largest Node.JS best practices list</a>
   - [Structure your solution by components](https://github.com/i0natan/nodebestpractices#-11-structure-your-solution-by-components)
   - [Separate Express 'app' and 'server'](https://github.com/i0natan/nodebestpractices#-14-separate-express-app-and-server)
@@ -41,7 +42,7 @@ I am always open to <a href="https://github.com/sandorTuranszky/production-ready
 
 ## ToDo:
 
-- Redis
+- Sentry error tracking
 - GraphQl integration
 - Authentication with [passport.js](http://www.passportjs.org/) (Gmail, Facebook, LinkedIn, Twitter)
 - Authentication with email/password + add/remove social accounts

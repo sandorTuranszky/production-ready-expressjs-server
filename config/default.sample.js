@@ -14,6 +14,10 @@ module.exports = {
       dbName: '', // required
       auto_reconnect: true,
     },
+    redis: {
+      url: '', // required
+      retryStrategy: 1000,
+    },
   },
   mock: {
     crashAppRoutes: true,
