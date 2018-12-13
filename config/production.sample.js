@@ -7,5 +7,12 @@ module.exports = {
       file: false,
     },
   },
-  db: {},
+  db: {
+    mongoose: {
+      user: '', // required
+      password: '', // required
+      dbName: '', // required
+      auto_reconnect: true,
+    },
+  },
 };

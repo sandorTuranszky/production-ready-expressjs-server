@@ -7,7 +7,14 @@ module.exports = {
       file: true,
     },
   },
-  db: {},
+  db: {
+    mongoose: {
+      user: '', // required
+      password: '', // required
+      dbName: '', // required
+      auto_reconnect: true,
+    },
+  },
   mock: {
     crashAppRoutes: true,
   },
