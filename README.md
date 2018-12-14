@@ -56,7 +56,8 @@ I am always open to <a href="https://github.com/sandorTuranszky/production-ready
 - [Set up environment variables](#set-up-environment-variables)
 - [Install and start Docker](#Install-and-start-docker)
 - [Install dependencies](#Install-dependencies)
-- [Create and connect to MongoDB Atlas cloud instance using the FREE plan](#Create-and-connect-to-MongoDB-Atlas-cloud-instance-using-the-FREE-plan)
+- [Create account and connect to MongoDB Atlas cloud instance using the FREE plan](#Create-account-and-connect-to-MongoDB-Atlas-cloud-instance-using-the-FREE-plan)
+- [Create account and connect to RedisLabs cloud instance using the FREE plan](#Create-account-and-connect-to-RedisLabs-cloud-instance-using-the-FREE-plan)
 - [Run server](#run-server-in-dev-mode)
 - [Test error handling](#test-error-handling)
 
@@ -80,9 +81,12 @@ You may also find [Securing production config files](https://github.com/lorenwes
 
 - `npm install`
 
-## Create and connect to MongoDB Atlas cloud instance using the FREE plan
+## Create account and connect to MongoDB Atlas cloud instance using the FREE plan
 
 - Create an account with [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/pricing) using the FREE plan and follow instructions [here](https://docs.atlas.mongodb.com/getting-started/)
+
+## Create account and connect to RedisLabs cloud instance using the FREE plan
+- Create an account with [Redislabs](https://redislabs.com/get-started/) using the FREE plan (choose Cloud Hosted - free up to 30MB) and follow instructions [here](https://docs.redislabs.com/latest/rc/quick-setup-redis-cloud/)
 
 ## Run server
 
