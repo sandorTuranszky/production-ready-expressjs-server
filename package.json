@@ -11,7 +11,7 @@
   "license": "ISC",
   "scripts": {
     "dev": "nodemon ./bin/www",
-    "start": "node index.js",
+    "start": "node ./bin/www",
     "test:unit": "set NODE_ENV=test && jest tests/unit",
     "test:int": "set NODE_ENV=test && jest tests/int",
     "coverage": "jest --collectCoverageFrom=src/**.js --coverage tests",
