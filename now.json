@@ -1,4 +1,8 @@
 {
   "name": "expressjs-opensource",
-  "version": 2
+  "version": 2,
+  "builds": [
+    { "src": "./bin/www", "use": "@now/node-server" }
+  ],
+  "regions": ["bru"]
 }
