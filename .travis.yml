@@ -28,9 +28,6 @@ after_success:
   - bash <(curl -s https://codecov.io/bash)
   - docker build -t server-express .
   - docker build -t server-express-nginx ./nginx
-
-deploy:
-  provider: script
-  script: bash docker_push
-  on:
-    branch: master  
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push sandorturanszky/projects:server-express
+  - docker push sandorturanszky/projects:server-express-nginx
