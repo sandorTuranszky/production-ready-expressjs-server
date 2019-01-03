@@ -30,7 +30,7 @@ after_success:
   - docker build -t server-express-nginx ./nginx
   - export DOCKER_ID_USER="sandorturanszky"
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker tag my_image $DOCKER_ID_USER/projects/server-express
-  - docker tag my_image $DOCKER_ID_USER/projects/server-express-nginx
-  - docker push $DOCKER_ID_USER/projects/server-express
-  - docker push $DOCKER_ID_USER/projects/server-express-nginx
+  - docker tag my_image $DOCKER_ID_USER/server-express
+  - docker tag my_image $DOCKER_ID_USER/server-express-nginx
+  - docker push $DOCKER_ID_USER/server-express
+  - docker push $DOCKER_ID_USER/server-express-nginx
