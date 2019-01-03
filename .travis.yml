@@ -28,3 +28,6 @@ after_success:
   - bash <(curl -s https://codecov.io/bash)
   - docker build -t server/express .
   - docker build -t server/express-nginx ./nginx
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push server/express
+  - docker push server/express-nginx
