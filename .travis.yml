@@ -26,9 +26,9 @@ script:
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
-  - docker build -t server-express .
-  - docker build -t server-express-nginx ./nginx
   - export DOCKER_ID_USER="sandorturanszky"
+  - docker build -t $DOCKER_ID_USER/server-express .
+  - docker build -t $DOCKER_ID_USER/server-express-nginx ./nginx
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker tag my_image $DOCKER_ID_USER/server-express
   - docker tag my_image $DOCKER_ID_USER/server-express-nginx
