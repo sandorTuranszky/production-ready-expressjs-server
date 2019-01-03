@@ -17,17 +17,17 @@ install:
 before_install:
   - mv ./config/default.sample.js ./config/default.js
   - mv ./config/test.sample.js ./config/test.js
-  - docker build -t sandorturanszky/projects/server-express-test -f ./Dockerfile.dev .
+  - docker build -t server-express-test -f ./Dockerfile.dev .
 
 script:
-  - docker run sandorturanszky/projects/server-express-test npm run test:unit
-  - docker run sandorturanszky/projects/server-express-test npm run test:int
-  - docker run -v "$PWD/shared:/usr/src/app/coverage" sandorturanszky/projects/server-express-test npm run coverage
+  - docker run server-express-test npm run test:unit
+  - docker run server-express-test npm run test:int
+  - docker run -v "$PWD/shared:/usr/src/app/coverage" server-express-test npm run coverage
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
-  - docker build -t sandorturanszky/projects/server-express .
-  - docker build -t sandorturanszky/projects/server-express-nginx ./nginx
+  - docker build -t server-express .
+  - docker build -t server-express-nginx ./nginx
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push sandorturanszky/projects/server-express
-  - docker push sandorturanszky/projects/server-express-nginx
+  - docker push sandorturanszky/projects:server-express
+  - docker push sandorturanszky/projects:server-express-nginx
