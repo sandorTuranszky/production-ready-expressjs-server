@@ -22,7 +22,7 @@ before_install:
 script:
   - docker run sandorturanszky/projects/server-express-test npm run test:unit
   - docker run sandorturanszky/projects/server-express-test npm run test:int
-  - docker run -v "$PWD/shared:/usr/src/app/coverage" server/express-test npm run coverage
+  - docker run -v "$PWD/shared:/usr/src/app/coverage" sandorturanszky/projects/server-express-test npm run coverage
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
