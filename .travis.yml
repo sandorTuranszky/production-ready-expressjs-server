@@ -34,4 +34,3 @@ after_success:
   - docker tag server-express-nginx $DOCKER_ID_USER/server-express-nginx
   - docker push $DOCKER_ID_USER/server-express
   - docker push $DOCKER_ID_USER/server-express-nginx
-g
