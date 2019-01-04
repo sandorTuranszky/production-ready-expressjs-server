@@ -39,6 +39,8 @@ This is a backend server for my project that is COMING SOON. It inspired by an i
   - [Do Require on the folders, not directly on the files](https://github.com/i0natan/nodebestpractices#-39-do-require-on-the-folders-not-directly-on-the-files)
   - [Use the === operator](https://github.com/i0natan/nodebestpractices#-310-use-the--operator)
 
+This project uses [Git hook](https://github.com/m1foley/fit-commit) to validate commit messages based on community standards
+
 I am always open to <a href="https://github.com/sandorTuranszky/production-ready-ExpressJs-server/issues" target="_blank">your feedback</a>
 
 ## ToDo:
