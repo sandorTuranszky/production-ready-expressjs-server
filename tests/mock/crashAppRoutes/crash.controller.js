@@ -1,5 +1,7 @@
 'use strict';
 
+/* eslint-disable promise/catch-or-return, promise/always-return, promise/no-callback-in-promise, promise/param-names */
+
 const fs = require('fs');
 const boom = require('boom');
 const { Writable } = require('stream');

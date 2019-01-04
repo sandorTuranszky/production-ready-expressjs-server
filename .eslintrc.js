@@ -1,11 +1,12 @@
 module.exports = {
-  plugins: ['security', 'jest', 'mocha'],
+  plugins: ['security', 'jest', 'mocha', 'promise'],
   extends: [
     'airbnb-base',
     'plugin:security/recommended',
     'plugin:node/recommended',
     'plugin:jest/recommended',
     'plugin:prettier/recommended',
+    'plugin:promise/recommended'
   ],
   env: {
     node: true,
