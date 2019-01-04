@@ -17,6 +17,7 @@ This is a backend server for my project that is COMING SOON. It inspired by an i
 - Testing with Jets and Supertest
 - MongodDb support with Mongoose `v1.1.0`
 - Redis support `v1.2.0`
+- Settings to push images to docker hub (optional)
 - Follows best practices from <a href="https://github.com/i0natan/nodebestpractices" target="_blank">The largest Node.JS best practices list</a>
   - [Structure your solution by components](https://github.com/i0natan/nodebestpractices#-11-structure-your-solution-by-components)
   - [Separate Express 'app' and 'server'](https://github.com/i0natan/nodebestpractices#-14-separate-express-app-and-server)
@@ -60,6 +61,9 @@ I am always open to <a href="https://github.com/sandorTuranszky/production-ready
 - [Create account and connect to RedisLabs cloud instance using the FREE plan](#Create-account-and-connect-to-RedisLabs-cloud-instance-using-the-FREE-plan)
 - [Run server](#run-server-in-dev-mode)
 - [Test error handling](#test-error-handling)
+
+## Additional settings
+- [Pushing images to docker hub (optional)](#pushing-images-to-docker-hub)
 
 ## Set up environment variables
 
@@ -110,3 +114,9 @@ You may also find [Securing production config files](https://github.com/lorenwes
 ## Error handling implementation explained
 
 - [Error handling Wiki](https://github.com/sandorTuranszky/production-ready-ExpressJs-server/wiki/Error-handling)
+
+## Pushing images to docker hub
+  To push images to [Docker Hub](https://hub.docker.com/) you need to provide your Docker user name and password as environment variables.
+  Refer to [Travis documentation](https://docs.travis-ci.com/user/environment-variables/#defining-variables-in-repository-settings) for more details
+  
+  Once environment variables set, uncomment related lines in `.travis.yml` file

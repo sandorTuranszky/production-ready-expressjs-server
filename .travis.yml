@@ -28,8 +28,9 @@ after_success:
   - bash <(curl -s https://codecov.io/bash)
   - docker build -t server-express .
   - docker build -t server-express-nginx ./nginx
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker tag server-express $DOCKER_USERNAME/server-express
-  - docker tag server-express-nginx $DOCKER_USERNAME/server-express-nginx
-  - docker push $DOCKER_USERNAME/server-express
-  - docker push $DOCKER_USERNAME/server-express-nginx
+  ### Uncomment to push images to docker hub. Required settings up env vars with Docker hub username and password ###
+  # - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  # - docker tag server-express $DOCKER_USERNAME/server-express
+  # - docker tag server-express-nginx $DOCKER_USERNAME/server-express-nginx
+  # - docker push $DOCKER_USERNAME/server-express
+  # - docker push $DOCKER_USERNAME/server-express-nginx
