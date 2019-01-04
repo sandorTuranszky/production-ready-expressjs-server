@@ -1,5 +1,7 @@
 'use strict';
 
+/* eslint-disable promise/catch-or-return, promise/always-return, promise/no-callback-in-promise */
+
 const request = require('supertest')(require('../../src/app'));
 
 const pageNotFoundRoute = '/route-does-not-exists';
