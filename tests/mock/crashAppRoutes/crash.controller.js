@@ -197,7 +197,7 @@ module.exports.asyncAwaitError = async (req, res) => {
 module.exports.streamReadable = (req, res, next) => {
   const src = fs.createReadStream('url-does-not-exists/data.json');
   src.on('error', err => {
-    next(err); // pass error to express
+    next(err); // Pass error to express
   });
   src.pipe(res);
 };
@@ -214,7 +214,7 @@ module.exports.streamWritable = (req, res, next) => {
   });
 
   writableStream.on('error', err => {
-    next(err); // pass error to express
+    next(err); // Pass error to express
   });
 
   writableStream.write('Test');

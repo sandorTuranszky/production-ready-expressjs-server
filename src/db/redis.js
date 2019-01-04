@@ -6,18 +6,18 @@ const config = require('config');
 const winston = require('../utils/logger/winston');
 
 let client = null;
-// const connectRedis = require('connect-redis');
+// Const connectRedis = require('connect-redis');
 
-// todo: check if session will be stored in redis
-// module.exports = (Session) => {
-//   const client = createClient({
-//     host: config.get('database.session.host'),
-//     port: config.get('database.session.port'),
-//     prefix: config.get('database.session.prefix'),
-//     disableTTL: true,
+// Todo: check if session will be stored in redis
+// Module.exports = (Session) => {
+//   Const client = createClient({
+//     Host: config.get('database.session.host'),
+//     Port: config.get('database.session.port'),
+//     Prefix: config.get('database.session.prefix'),
+//     DisableTTL: true,
 //   });
-//   const RedisStore = connectRedis(Session);
-//   return new RedisStore({ client: client });
+//   Const RedisStore = connectRedis(Session);
+//   Return new RedisStore({ client: client });
 // };
 
 const redisURL = url.parse(config.get('db.redis.url'));

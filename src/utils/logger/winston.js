@@ -44,7 +44,7 @@ const logger = createLogger({
     ...(config.app.logging.file ? [new transports.File(options.file)] : []),
     new transports.Console(options.console),
   ],
-  exitOnError: false, // do not exit on handled exceptions
+  exitOnError: false, // Do not exit on handled exceptions
 });
 
 /**
@@ -54,16 +54,16 @@ logger.stream = {
   stdout: {
     // eslint-disable-next-line no-unused-vars
     write(message, encoding) {
-      // use the 'info' log level so the output will be picked up
-      // by both transports (file and console)
+      // Use the 'info' log level so the output will be picked up
+      // By both transports (file and console)
       logger.info(message);
     },
   },
   stderr: {
     // eslint-disable-next-line no-unused-vars
     write(message, encoding) {
-      // use the 'error' log level so the output will be picked up
-      // by both transports (file and console)
+      // Use the 'error' log level so the output will be picked up
+      // By both transports (file and console)
       logger.error(message);
     },
   },

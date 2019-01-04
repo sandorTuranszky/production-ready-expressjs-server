@@ -9,13 +9,13 @@ module.exports = {
   },
   db: {
     mongoose: {
-      user: '', // required
-      password: '', // required
-      dbName: '', // required
+      user: '', // Required
+      password: '', // Required
+      dbName: '', // Required
       auto_reconnect: true,
     },
     redis: {
-      url: '', // required
+      url: '', // Required
       retryStrategy: 1000,
     },
   },

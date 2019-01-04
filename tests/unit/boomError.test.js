@@ -87,7 +87,7 @@ describe('Error handlers from errorMiddleware', () => {
         const errWithNoMessage = new Error();
         errorDecorator(errWithNoMessage, req, res, next);
         test('should use default error message from boom error object', () => {
-          // boom will set a default error code 500 with message 'An internal server error occurred'
+          // Boom will set a default error code 500 with message 'An internal server error occurred'
           expect(errWithNoMessage.output.payload.message).toBe('An internal server error occurred');
         });
       });
