@@ -61,6 +61,14 @@ module.exports = {
         ignores: [],
       },
     ],
+    'capitalized-comments': [
+      'error',
+      'always',
+      {
+        ignorePattern: 'pragma|ignored',
+        ignoreInlineComments: true,
+      },
+    ],
     // 'node/shebang': ['error', { convertPath: null }],
     'mocha/no-exclusive-tests': 'error',
     'mocha/no-global-tests': 'error',
