@@ -1,6 +1,6 @@
 {
   "name": "production-ready-expressjs-server",
-  "version": "1.0.0",
+  "version": "1.2.1",
   "engines": {
     "node": ">=8.12.0"
   },
@@ -16,7 +16,10 @@
     "test:int": "set NODE_ENV=test && jest tests/int",
     "coverage": "jest --collectCoverageFrom=src/**.js --coverage tests",
     "lint": "eslint .",
-    "lint:write": "eslint --debug . --fix"
+    "lint:write": "eslint --debug . --fix",
+    "version:patch": "npm version patch",
+    "version:minor": "npm version minor",
+    "version:major": "npm version major"
   },
   "husky": {
     "hooks": {
@@ -37,6 +40,7 @@
     ]
   },
   "dependencies": {
+    "@sentry/node": "^4.4.2",
     "app-root-path": "^2.1.0",
     "body-parser": "1.18.3",
     "boom": "^7.2.0",
