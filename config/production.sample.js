@@ -19,4 +19,7 @@ module.exports = {
       retryStrategy: 1000,
     },
   },
+  sentry: {
+    dsn: 'your-sentry-dsn',
+  },
 };

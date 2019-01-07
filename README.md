@@ -18,6 +18,7 @@ This is a backend server for my project that is COMING SOON. It inspired by an i
 - MongodDb support with Mongoose `v1.1.0`
 - Redis support `v1.2.0`
 - Settings to push images to docker hub (optional)
+- Sentry error tracking
 - Follows best practices from <a href="https://github.com/i0natan/nodebestpractices" target="_blank">The largest Node.JS best practices list</a>
   - [Structure your solution by components](https://github.com/i0natan/nodebestpractices#-11-structure-your-solution-by-components)
   - [Separate Express 'app' and 'server'](https://github.com/i0natan/nodebestpractices#-14-separate-express-app-and-server)
@@ -45,7 +46,6 @@ I am always open to <a href="https://github.com/sandorTuranszky/production-ready
 
 ## ToDo:
 
-- Sentry error tracking
 - GraphQl integration
 - Authentication with [passport.js](http://www.passportjs.org/) (Gmail, Facebook, LinkedIn, Twitter)
 - Authentication with email/password + add/remove social accounts
@@ -61,6 +61,7 @@ I am always open to <a href="https://github.com/sandorTuranszky/production-ready
 - [Install dependencies](#Install-dependencies)
 - [Create account and connect to MongoDB Atlas cloud instance using the FREE plan](#Create-account-and-connect-to-MongoDB-Atlas-cloud-instance-using-the-FREE-plan)
 - [Create account and connect to RedisLabs cloud instance using the FREE plan](#Create-account-and-connect-to-RedisLabs-cloud-instance-using-the-FREE-plan)
+- [Create account and setup Sentry error tracking](#Create-account-and-setup-Sentry-error-tracking)
 - [Run server](#run-server-in-dev-mode)
 - [Test error handling](#test-error-handling)
 
@@ -93,6 +94,16 @@ You may also find [Securing production config files](https://github.com/lorenwes
 
 ## Create account and connect to RedisLabs cloud instance using the FREE plan
 - Create an account with [Redislabs](https://redislabs.com/get-started/) using the FREE plan (choose Cloud Hosted - free up to 30MB) and follow instructions [here](https://docs.redislabs.com/latest/rc/quick-setup-redis-cloud/)
+
+## Create account and setup Sentry error tracking
+- Create a Sentry account [here](https://sentry.io/welcome/)
+- Add your `your-sentry-dsn` to all configuration files in `/config` dir
+
+```
+  sentry: {
+    dsn: 'your-sentry-dsn',
+  },
+```
 
 ## Run server
 
