@@ -3,6 +3,9 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const helmet = require('helmet');
+const config = require('config');
+const Sentry = require('@sentry/node');
+const packageJson = require('../package.json');
 const { stderrStream, stdoutStream } = require('./utils/logger/morgan');
 const {
   errorDecorator,
@@ -13,6 +16,17 @@ const {
 } = require('./utils/errorMiddleware');
 
 const app = express();
+
+Sentry.init({
+  dsn: config.get('sentry.dsn'),
+  environment: process.env.NODE_ENV,
+  release: packageJson.version,
+});
+
+/**
+ * SENTRY: The request handler must be the first middleware on the app
+ */
+app.use(Sentry.Handlers.requestHandler());
 
 /**
  * Require modules conditionally
@@ -48,6 +62,11 @@ app.use(cookieParser());
 /**
  * ERROR HANDLING
  */
+
+/**
+ * SENTRY: The error handler must be before any other error middleware
+ */
+app.use(Sentry.Handlers.errorHandler());
 
 /**
  * Catch 404 and forward to error handler
