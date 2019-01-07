@@ -17,6 +17,9 @@ const {
 
 const app = express();
 
+/**
+ * SENTRY initialization
+ */
 Sentry.init({
   dsn: config.get('sentry.dsn'),
   environment: process.env.NODE_ENV,
