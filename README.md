@@ -97,7 +97,7 @@ You may also find [Securing production config files](https://github.com/lorenwes
 
 ## Create account and setup Sentry error tracking
 - Create a Sentry account [here](https://sentry.io/welcome/)
-- Add your `your-sentry-dsn` to all configuration files in `/config` dir
+- Add `your-sentry-dsn` to all configuration files in `/config` dir
 
 ```
   sentry: {
