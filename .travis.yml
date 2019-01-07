@@ -16,7 +16,8 @@ install:
 
 before_install:
   - mv ./config/default.sample.js ./config/default.js
-  - cat ./config/test.sample.js | sed -e "s|your-sentry-dsn|"$SENTRY_DSN"|" > ./config/test.js # Set correct Sentry dns
+  - cat ./config/test.sample.js | sed "s|your-sentry-dsn|"$SENTRY_DSN"|" > ./config/test.js # Set correct Sentry dns
+  - echo ./config/test.js
   - docker build -t server-express-test -f ./Dockerfile.dev .
 
 script:
