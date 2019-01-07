@@ -15,16 +15,15 @@ install:
   - npm install -g codecov
 
 before_install:
-  - cat ./config/default.sample.js | sed "s|your-sentry-dsn|"$SENTRY_DSN"|" > ./config/default.js # Set correct Sentry dns
+  - mv ./config/default.sample.js ./config/default.js
+  #- cat ./config/default.sample.js | sed "s|your-sentry-dsn|"$SENTRY_DSN"|" > ./config/default.js # Set correct Sentry dns
   - cat ./config/test.sample.js | sed "s|your-sentry-dsn|"$SENTRY_DSN"|" > ./config/test.js # Set correct Sentry dns
-  - cat ./config/test.js
-  - cat ./config/default.js  
   - docker build -t server-express-test -f ./Dockerfile.dev .
 
 script:
-  - docker run server-express-test npm run test:unit
-  - docker run server-express-test npm run test:int
-  - docker run -v "$PWD/shared:/usr/src/app/coverage" server-express-test npm run coverage
+  - docker run --env NODE_ENV=test server-express-test npm run test:unit
+  - docker run --env NODE_ENV=test server-express-test npm run test:int
+  - docker run --env NODE_ENV=test -v "$PWD/shared:/usr/src/app/coverage" server-express-test npm run coverage
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
