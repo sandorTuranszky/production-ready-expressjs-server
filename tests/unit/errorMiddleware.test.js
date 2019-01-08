@@ -3,11 +3,23 @@
 const winston = require('../../src/utils/logger/winston');
 
 const {
+  exitProcess,
   uncaughtExceptionHandler,
   errorDecorator,
   finalErrorHandler,
   unhandledRejectionHandler,
 } = require('../../src/utils/errorMiddleware.js');
+
+describe('Helper function "exitProcess" from errorMiddleware', () => {
+  describe('When called', () => {
+    test('should exit process with "1" as argument', () => {
+      const exit = jest.spyOn(process, 'exit').mockImplementation(number => number);
+      exitProcess();
+      expect(exit).toHaveBeenCalledWith(1);
+      exit.mockRestore();
+    });
+  });
+});
 
 describe('Error handlers from errorMiddleware', () => {
   describe('Function unhandledRejectionHandler', () => {

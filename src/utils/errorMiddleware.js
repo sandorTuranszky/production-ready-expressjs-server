@@ -123,6 +123,7 @@ const finalErrorHandler = (err, req, res, next) => {
 };
 
 module.exports = {
+  exitProcess,
   errorDecorator,
   finalErrorHandler,
   notFoundErrorHandler,
