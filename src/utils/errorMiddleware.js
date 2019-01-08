@@ -1,7 +1,19 @@
 'use strict';
 
 const boom = require('boom');
+const Sentry = require('@sentry/node');
 const winston = require('./logger/winston');
+
+/**
+ * Wait for an error message to be logged by Sentry before exiting the process
+ * @url https://docs.sentry.io/error-reporting/configuration/draining/?platform=node
+ */
+const exitProcess = () => {
+  const sentryClient = Sentry.getCurrentHub().getClient();
+  // eslint-disable-next-line promise/catch-or-return, promise/always-return, promise/no-promise-in-callback, no-process-exit
+  if (sentryClient) sentryClient.close(2000).then(() => process.exit(1));
+  else process.exit(1); // eslint-disable-line no-process-exit
+};
 
 /**
  * Catch 404 and forward to error handler
@@ -43,8 +55,7 @@ const unhandledRejectionHandler = (reason, p) => {
  */
 const uncaughtExceptionHandler = err => {
   winston.error(err);
-  // eslint-disable-next-line no-process-exit
-  process.exit(1);
+  exitProcess();
 };
 
 /**
@@ -92,6 +103,7 @@ const errorDecorator = (err, req, res, next) => {
  * WARNING: Must be defined last, after other app.use(), routes calls
  * and all other error handling middleware
  */
+// eslint-disable-next-line consistent-return
 const finalErrorHandler = (err, req, res, next) => {
   /**
    * Delegate to the default Express error handler,
@@ -106,8 +118,7 @@ const finalErrorHandler = (err, req, res, next) => {
    * Crash server in case of a developer error.
    * NOTE: a Node.js process manager should be set up to immediately restart the crashed server
    */
-  // eslint-disable-next-line no-process-exit
-  if (err.isDeveloperError) process.exit(1);
+  if (err.isDeveloperError) exitProcess();
   else return res.status(err.output.statusCode).json(err);
 };
 
