@@ -62,6 +62,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+// Test
+const kueManager = require('./utils/kue/kueManager');
+
+kueManager.sendWelcomeEmail({
+  title: 'Test 1',
+  to: 'sandor.turanszky@gmail.com',
+  body: 'Email body 2',
+});
+// Last
+
 /**
  * ERROR HANDLING
  */
