@@ -16,3 +16,13 @@ services:
     volumes:
       - /usr/src/app/node_modules
       - .:/usr/src/app
+  kue:
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - '3050:3050'
+    volumes:
+      - /app/node_modules
+      - .:/app
+    command: ["npm", "run", "kue"]         
