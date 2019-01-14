@@ -21,7 +21,7 @@
     "version:minor": "npm version minor",
     "version:major": "npm version major",
     "push-tags": "git push --tags origin",
-    "kue": "node ./src/utils/kue/kueUI.js"
+    "kue": "node ./src/utils/kue/dashboard.js"
   },
   "husky": {
     "hooks": {

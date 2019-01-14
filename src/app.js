@@ -63,7 +63,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 // Test
-const kueManager = require('./utils/kue/kueManager');
+const kueManager = require('./utils/kue/manager');
 
 kueManager.sendWelcomeEmail({
   title: 'Test 1',
