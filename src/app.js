@@ -66,9 +66,11 @@ app.use(cookieParser());
 const { email: emailManager } = require('./utils/kue/manager');
 
 emailManager.sendWelcomeEmail({
-  title: 'Test 1',
+  fromEmail: 'sandor.turanszky+opensource@gmail.com',
+  FromName: 'Sandor',
+  subject: 'This is to test email via mailjet',
   to: 'sandor.turanszky@gmail.com',
-  body: 'Email body 2',
+  body: 'Email body should be here',
 });
 // Last
 
