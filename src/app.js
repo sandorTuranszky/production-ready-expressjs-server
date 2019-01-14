@@ -63,9 +63,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 // Test
-const kueManager = require('./utils/kue/manager');
+const { email: emailManager } = require('./utils/kue/manager');
 
-kueManager.sendWelcomeEmail({
+emailManager.sendWelcomeEmail({
   title: 'Test 1',
   to: 'sandor.turanszky@gmail.com',
   body: 'Email body 2',
