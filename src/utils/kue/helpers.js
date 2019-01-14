@@ -7,7 +7,7 @@ const { defaultOptions } = require('./config');
 
 const propsMap = {
   generic: ['type'],
-  email: ['title', 'to', 'body', 'template'],
+  email: ['subject', 'to', 'body', 'template'],
 };
 
 const queue = kue.createQueue({
