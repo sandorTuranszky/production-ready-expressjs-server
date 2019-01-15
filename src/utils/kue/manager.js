@@ -1,5 +1,6 @@
 'use strict';
 
+const boom = require('boom');
 const winston = require('../logger/winston');
 const email = require('./email');
 const { queue, removeJobs } = require('./helpers');
@@ -15,7 +16,7 @@ queue.on('job complete', id => {
 });
 
 queue.on('error', err => {
-  winston.error(`Error occurred during processing Kue jobs: ${err}`);
+  winston.error(`Error occurred during processing Kue jobs: ${boom.boomify(err)}`);
 });
 
 module.exports = {

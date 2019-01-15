@@ -1,5 +1,6 @@
 'use strict';
 
+const boom = require('boom');
 const config = require('config');
 const mailjet = require('node-mailjet').connect(
   config.get('mailjet.api_key'),
@@ -9,7 +10,7 @@ const mailjet = require('node-mailjet').connect(
 const winston = require('../../logger/winston');
 
 const handleError = err => {
-  winston.error(`Error occurred during sending email: ${err.ErrorMessage}`);
+  winston.error(`Error occurred during sending email: ${boom.boomify(err)}`);
 };
 
 const send = data => {
