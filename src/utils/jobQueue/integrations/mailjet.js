@@ -1,5 +1,11 @@
 'use strict';
 
+/**
+ * MailJet API for sending basic email
+ * @url https://dev.mailjet.com/guides/?javascript#sending-a-basic-email
+ *
+ * TODO: templates @url https://dev.mailjet.com/guides/?javascript#using-a-template
+ */
 const config = require('config');
 const mailjet = require('node-mailjet').connect(
   config.get('mailjet.api_key'),
@@ -17,13 +23,12 @@ const send = data =>
         To: [
           {
             Email: data.to,
-            Name: 'passenger 1',
+            Name: data.nameTo,
           },
         ],
         Subject: data.subject,
         TextPart: data.body,
-        HTMLPart:
-          '<h3>Dear passenger 1, welcome to Mailjet!</h3><br />May the delivery force be with you!',
+        HTMLPart: data.htmlBody,
       },
     ],
   });
