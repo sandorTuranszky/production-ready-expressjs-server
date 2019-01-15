@@ -17,7 +17,7 @@ install:
 before_install:
   - mv ./config/default.sample.js ./config/default.js
   - cat ./config/test.sample.js | sed "s|your-sentry-dsn|"$SENTRY_DSN"|; s|your-redis-url|"$REDIS_URL"|" > ./config/test.js # Set correct Sentry dns and Redis url
-  - echo ./config/test.sample.js
+  - cat ./config/test.sample.js
   - docker build -t server-express-test -f ./Dockerfile.dev .
 
 script:
