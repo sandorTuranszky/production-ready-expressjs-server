@@ -19,6 +19,7 @@ This is a backend server for my project that is COMING SOON. It inspired by an i
 - Redis support `v1.2.0`
 - Settings to push images to docker hub (optional)
 - Sentry error tracking
+- Priority job queue with [Kue](https://github.com/Automattic/kue) (e.g: for sending transactional emails). Queue implementation can be easily replaced with anything you prefer (apart from Kue). Emails (transactional) are sent with [mailjet](https://www.mailjet.com/) that offers 200 emails/day for free under the [Free](https://www.mailjet.com/pricing/) plan.
 - Follows best practices from <a href="https://github.com/i0natan/nodebestpractices" target="_blank">The largest Node.JS best practices list</a>
   - [Structure your solution by components](https://github.com/i0natan/nodebestpractices#-11-structure-your-solution-by-components)
   - [Separate Express 'app' and 'server'](https://github.com/i0natan/nodebestpractices#-14-separate-express-app-and-server)
@@ -51,7 +52,6 @@ I am always open to <a href="https://github.com/sandorTuranszky/production-ready
 - Authentication with email/password + add/remove social accounts
 - Password recovery
 - GDPR ready (cookies, settings)
-- Priority job queue with [Kue](https://github.com/Automattic/kue) (e.g: for sending transactional emails)
 - [TypeScript](https://www.typescriptlang.org/) (maybe)
 
 ## Get started
@@ -62,6 +62,7 @@ I am always open to <a href="https://github.com/sandorTuranszky/production-ready
 - [Create account and connect to MongoDB Atlas cloud instance using the FREE plan](#Create-account-and-connect-to-MongoDB-Atlas-cloud-instance-using-the-FREE-plan)
 - [Create account and connect to RedisLabs cloud instance using the FREE plan](#Create-account-and-connect-to-RedisLabs-cloud-instance-using-the-FREE-plan)
 - [Create account and setup Sentry error tracking](#Create-account-and-setup-Sentry-error-tracking)
+- [Create account and setup MailJet to send transactional emails](#Create-account-and-setup-MailJet-to-send-transactional-emails)
 - [Run server](#run-server-in-dev-mode)
 - [Test error handling](#test-error-handling)
 
@@ -104,6 +105,18 @@ You may also find [Securing production config files](https://github.com/lorenwes
     dsn: 'your-sentry-dsn',
   },
 ```
+
+## Create account and setup MailJet to send transactional emails
+- Create a MailJet account [here](https://www.mailjet.com/)
+- Add `your-mailjet-api-key` and `your-mailjet-secret` to all configuration files in `/config` dir
+
+```
+  mailjet: {
+    api_key: 'your-mailjet-api-key',
+    secret: 'your-mailjet-secret',
+  },
+```
+- Important!!! You need to use a domain-based email address as an email sender (e.g. your project's domain name) to ensure emails are delivered to the inbox. Otherwise, they will end up in spam (including example@gmail.com once). In your MailJet account you can verify your email and take additional measures (e.g.SPF and DKIM settings) to ensure your emails are delivered.
 
 ## Run server
 
