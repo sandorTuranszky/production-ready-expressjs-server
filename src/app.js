@@ -63,7 +63,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 // Test
-const { email: emailManager } = require('./utils/kue/manager');
+const { email: emailManager } = require('./utils/jobQueue');
 
 emailManager.sendWelcomeEmail({
   fromEmail: 'sandor.turanszky+opensource@gmail.com',
