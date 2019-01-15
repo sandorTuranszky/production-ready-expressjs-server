@@ -15,7 +15,7 @@ module.exports = {
       auto_reconnect: true,
     },
     redis: {
-      url: '', // Required
+      url: 'your-redis-url', // Required
       retryStrategy: 1000,
     },
   },
