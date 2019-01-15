@@ -1,6 +1,7 @@
 'use strict';
 
 const kue = require('kue');
+const boom = require('boom');
 const config = require('config');
 const winston = require('../logger/winston');
 const { defaultOptions } = require('./config');
@@ -32,7 +33,7 @@ const saveTask = args => {
     .attempts(attempts)
     .removeOnComplete(remove)
     .save(err => {
-      if (err) winston.error(`Error occurred during creating a Kue task: ${err}`);
+      if (err) winston.error(`Error occurred during creating a Kue task: ${boom.boomify(err)}`);
     });
   return job;
 };
