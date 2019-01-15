@@ -21,7 +21,7 @@
     "version:minor": "npm version minor",
     "version:major": "npm version major",
     "push-tags": "git push --tags origin",
-    "kue": "node ./src/utils/jobQueue/dashboard.js"
+    "kue": "node ./src/utils/jobQueue/queues/kue/dashboard.js"
   },
   "husky": {
     "hooks": {

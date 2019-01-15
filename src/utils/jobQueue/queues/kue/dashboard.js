@@ -2,7 +2,7 @@
 
 const kue = require('kue');
 const config = require('config');
-const winston = require('../logger/winston');
+const winston = require('../../../logger/winston');
 
 const port = 3050;
 

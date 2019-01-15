@@ -1,11 +1,9 @@
 'use strict';
 
 const boom = require('boom');
-const { createTask } = require('./helpers');
-const { defaults } = require('./config');
-const { queue } = require('./helpers');
-const { send } = require('./integrations/mailjet');
-const winston = require('../logger/winston');
+const winston = require('../../logger/winston');
+const { queue, defaults, createTask } = require('../queues/kue');
+const { send } = require('../integrations/mailjet');
 
 const presetTemplates = {
   welcome: 'welcome-template',
@@ -29,8 +27,7 @@ const handleError = err => {
 };
 
 /**
- * Send email - MailJet implementation
- * Any other email service can be used instead
+ * Kue specific implementation of email sending functionality
  */
 // eslint-disable-next-line no-unused-vars
 queue.process('email', defaults.email.concurrency, (job, done) => {
