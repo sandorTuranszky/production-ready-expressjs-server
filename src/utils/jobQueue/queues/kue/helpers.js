@@ -3,7 +3,7 @@
 const kue = require('kue');
 const boom = require('boom');
 const config = require('config');
-const winston = require('../logger/winston');
+const winston = require('../../../logger/winston');
 const { defaultOptions } = require('./config');
 
 const propsMap = {
@@ -14,6 +14,8 @@ const propsMap = {
 const queue = kue.createQueue({
   redis: config.get('db.redis.url'),
 });
+
+queue.watchStuckJobs(1000 * 10);
 
 const validateProps = args => {
   const { type, data } = args;
@@ -50,8 +52,19 @@ const removeJobs = id => {
   });
 };
 
+queue.on('job enqueue', (id, type) => {
+  winston.info(`Job #id ${id} got queued of type ${type}`);
+});
+
+queue.on('job complete', id => {
+  removeJobs(id);
+});
+
+queue.on('error', err => {
+  winston.error(`Error occurred during processing Kue jobs: ${boom.boomify(err)}`);
+});
+
 module.exports = {
   queue,
   createTask,
-  removeJobs,
 };
