@@ -69,7 +69,7 @@ emailManager.sendWelcomeEmail({
   fromEmail: 'sandor.turanszky+opensource@gmail.com',
   FromName: 'Sandor',
   subject: 'This is to test email via mailjet',
-  to: 'sandor.turanszky@gmail.com',
+  to: 'sandor.turanszky+opensource@gmail.com',
   body: 'Email body should be here',
 });
 // Last
