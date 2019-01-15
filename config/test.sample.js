@@ -24,7 +24,7 @@ module.exports = {
     secret: 'your-mailjet-secret',
   },
   sentry: {
-    dsn: 'your-sentry-dsn',
+    dsn: 'your-sentry-dsn', // Required
   },
   mock: {
     crashAppRoutes: true,
