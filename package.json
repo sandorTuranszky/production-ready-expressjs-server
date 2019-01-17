@@ -21,7 +21,9 @@
     "version:minor": "npm version minor",
     "version:major": "npm version major",
     "push-tags": "git push --tags origin",
-    "kue": "node ./src/utils/jobQueue/queues/kue/dashboard.js"
+    "kue": "node ./src/utils/jobQueue/queues/kue/dashboard.js",
+    "graphql:start": "node ./src/graphql",
+    "graphql:dev": "nodemon ./src/graphql/index.js --ext js,graphql"
   },
   "husky": {
     "hooks": {
