@@ -9,15 +9,16 @@ services:
       - '3030:80'
     depends_on:
       - api
-  api:
-    build:
-      dockerfile: Dockerfile.dev
+  graphql:
+    build: 
       context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - '4050:4050'
     volumes:
-      - /usr/src/app/node_modules
+      - /app/node_modules
       - .:/usr/src/app
-    depends_on:
-      - kue      
+    command: ["npm", "run", "graphql:dev"]
   kue:
     build: 
       context: .
@@ -26,5 +27,15 @@ services:
       - '3050:3050'
     volumes:
       - /app/node_modules
-      - .:/app
-    command: ["npm", "run", "kue"]         
+      - .:/usr/src/app
+    command: ["npm", "run", "kue"]     
+  api:
+    build:
+      dockerfile: Dockerfile.dev
+      context: .
+    volumes:
+      - /usr/src/app/node_modules
+      - .:/usr/src/app
+    depends_on:
+      - graphql    
+      - kue  
