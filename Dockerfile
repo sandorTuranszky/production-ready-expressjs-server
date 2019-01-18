@@ -10,6 +10,7 @@ WORKDIR /usr/src/app
 # where available (npm@5+)
 COPY package*.json ./
 
+RUN npm install -g prisma --save
 RUN npm install --only=production
 
 # Bundle app source
