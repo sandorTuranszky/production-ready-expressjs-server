@@ -21,9 +21,7 @@
     "version:minor": "npm version minor",
     "version:major": "npm version major",
     "push-tags": "git push --tags origin",
-    "kue": "node ./src/utils/jobQueue/queues/kue/dashboard.js",
-    "graphql:start": "node ./src/graphql",
-    "graphql:dev": "nodemon ./src/graphql/index.js --ext js,graphql"
+    "kue": "node ./src/utils/jobQueue/queues/kue/dashboard.js"
   },
   "husky": {
     "hooks": {
@@ -53,7 +51,6 @@
     "cors": "2.8.4",
     "debug": "^4.0.1",
     "express": "4.16.3",
-    "graphql-yoga": "^1.17.0",
     "helmet": "^3.13.0",
     "http-errors": "^1.7.1",
     "kue": "^0.11.6",
