@@ -4,7 +4,7 @@ services:
     image: prismagraphql/prisma:1.24
     restart: always
     ports:
-    - "4466:4466"
+    - "4466:4466"  
     environment:
       PRISMA_CONFIG: |
         port: 4466
@@ -14,4 +14,4 @@ services:
           default:
             connector: mongo
             uri: >-
-              mongodb+srv://shopping-list-user:i3gBCmTRYpwzoHqD@shopping-list-cluster-clxgl.mongodb.net/shopping-list?retryWrites=true
+              ${MONGO_DB}
