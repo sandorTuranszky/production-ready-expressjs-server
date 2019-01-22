@@ -9,6 +9,21 @@ services:
       - '3030:80'
     depends_on:
       - api
+  prisma:
+    image: prismagraphql/prisma:1.24
+    restart: always
+    ports:
+    - "4466:4466"  
+    environment:
+      PRISMA_CONFIG: |
+        port: 4466
+        # uncomment the next line and provide the env var PRISMA_MANAGEMENT_API_SECRET=my-secret to activate cluster security
+        # managementApiSecret: my-secret
+        databases:
+          default:
+            connector: mongo
+            uri: >-
+              ${MONGO_DB}      
   kue:
     build: 
       context: .
@@ -18,7 +33,7 @@ services:
     volumes:
       - /app/node_modules
       - .:/usr/src/app
-    command: ["npm", "run", "kue"]     
+    command: ["npm", "run", "kue"]
   api:
     build:
       dockerfile: Dockerfile.dev
@@ -27,4 +42,5 @@ services:
       - /usr/src/app/node_modules
       - .:/usr/src/app
     depends_on:
-      - kue  
+      - prisma
+      - kue

@@ -1,6 +1,0 @@
-type User {
-  id: ID! @id
-  name: String!
-  createdAt: DateTime!
-  updatedAt: DateTime!  
-}
