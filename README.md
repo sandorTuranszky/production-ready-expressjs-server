@@ -19,6 +19,7 @@ This is a backend server for my project that is COMING SOON. It inspired by an i
 - Redis support `v1.2.0`
 - Settings to push images to docker hub (optional)
 - Sentry error tracking
+- GraphQl integration with [Prisma](https://www.prisma.io/)
 - Priority job queue with [Kue](https://github.com/Automattic/kue) (e.g: for sending transactional emails). Queue implementation can be easily replaced with anything you prefer (apart from Kue). Emails (transactional) are sent with [mailjet](https://www.mailjet.com/) that offers 200 emails/day for free under the [Free](https://www.mailjet.com/pricing/) plan.
 - Follows best practices from <a href="https://github.com/i0natan/nodebestpractices" target="_blank">The largest Node.JS best practices list</a>
   - [Structure your solution by components](https://github.com/i0natan/nodebestpractices#-11-structure-your-solution-by-components)
@@ -47,7 +48,6 @@ I am always open to <a href="https://github.com/sandorTuranszky/production-ready
 
 ## ToDo:
 
-- GraphQl integration
 - Authentication with [passport.js](http://www.passportjs.org/) (Gmail, Facebook, LinkedIn, Twitter)
 - Authentication with email/password + add/remove social accounts
 - Password recovery
@@ -60,6 +60,7 @@ I am always open to <a href="https://github.com/sandorTuranszky/production-ready
 - [Install and start Docker](#Install-and-start-docker)
 - [Install dependencies](#Install-dependencies)
 - [Create account and connect to MongoDB Atlas cloud instance using the FREE plan](#Create-account-and-connect-to-MongoDB-Atlas-cloud-instance-using-the-FREE-plan)
+- [Set up Prisma](#set-up-Prisma)
 - [Create account and connect to RedisLabs cloud instance using the FREE plan](#Create-account-and-connect-to-RedisLabs-cloud-instance-using-the-FREE-plan)
 - [Create account and setup Sentry error tracking](#Create-account-and-setup-Sentry-error-tracking)
 - [Create account and setup MailJet to send transactional emails](#Create-account-and-setup-MailJet-to-send-transactional-emails)
@@ -92,6 +93,11 @@ You may also find [Securing production config files](https://github.com/lorenwes
 ## Create account and connect to MongoDB Atlas cloud instance using the FREE plan
 
 - Create an account with [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/pricing) using the FREE plan and follow instructions [here](https://docs.atlas.mongodb.com/getting-started/)
+
+## Set up Prisma
+- Prisma serves as an ORM and to make it work you need to provide MongoDB connection string (you should have it from the previous step by now) in the `.env` file in the project root.
+- Schema is defined here `./prisma/datamodel.prisma`
+- Use `npm run get-schema` to download schema from endpoint to `./src/generated/prisma.graphql`
 
 ## Create account and connect to RedisLabs cloud instance using the FREE plan
 - Create an account with [Redislabs](https://redislabs.com/get-started/) using the FREE plan (choose Cloud Hosted - free up to 30MB) and follow instructions [here](https://docs.redislabs.com/latest/rc/quick-setup-redis-cloud/)
