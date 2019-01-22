@@ -5,13 +5,12 @@
 const http = require('http');
 const config = require('config');
 const winston = require('../src/utils/logger/winston');
-const { mongodb, createRedisClient } = require('../src/db');
+const { createRedisClient } = require('../src/db');
 const app = require('../src/app');
 
 /**
  * Connect DBs
  */
-mongodb();
 createRedisClient();
 
 /**

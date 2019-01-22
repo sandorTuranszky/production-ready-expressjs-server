@@ -1,0 +1,12 @@
+{
+  "projects": {
+    "production-ready-expressjs-server": {
+      "schemaPath": "src/generated/prisma.graphql",
+      "extensions": {
+        "endpoints": {
+          "default": "http://localhost:4466"
+        }
+      }
+    }
+  }
+}
