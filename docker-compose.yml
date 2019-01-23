@@ -24,6 +24,18 @@ services:
             connector: mongo
             uri: >-
               ${MONGO_DB}      
+  graphql:
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - '4000:4000'
+    volumes:
+      - /app/node_modules
+      - .:/usr/src/app
+    command: ["npm", "run", "graphql"]
+    depends_on:
+      - prisma  
   kue:
     build: 
       context: .
@@ -43,4 +55,5 @@ services:
       - .:/usr/src/app
     depends_on:
       - prisma
+      - graphql
       - kue
