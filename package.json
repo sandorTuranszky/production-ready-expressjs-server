@@ -22,7 +22,7 @@
     "version:major": "npm version major",
     "push-tags": "git push --tags origin",
     "kue": "node ./src/utils/jobQueue/queues/kue/dashboard.js",
-    "graphql": "nodemon --signal SIGINT ./graphql-yoga-server/graphql-yoga.js --ext js,graphql",
+    "graphql": "nodemon --signal SIGINT ./graphql/graphql-yoga.js --ext js,graphql",
     "get-schema": "graphql get-schema -p production-ready-expressjs-server"
   },
   "husky": {
