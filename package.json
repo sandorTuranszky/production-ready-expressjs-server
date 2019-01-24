@@ -10,7 +10,7 @@
   "author": "Sandor Turanszky",
   "license": "ISC",
   "scripts": {
-    "dev": "nodemon ./bin/www",
+    "dev": "nodemon ./bin/www --ext js,graphql",
     "start": "node ./bin/www",
     "test:unit": "set NODE_ENV=test && jest tests/unit",
     "test:int": "set NODE_ENV=test && jest tests/int",
@@ -22,7 +22,7 @@
     "version:major": "npm version major",
     "push-tags": "git push --tags origin",
     "kue": "node ./src/utils/jobQueue/queues/kue/dashboard.js",
-    "graphql": "node ./graphql-yoga-server/graphql-yoga.js",
+    "graphql": "nodemon --signal SIGINT ./graphql-yoga-server/graphql-yoga.js --ext js,graphql",
     "get-schema": "graphql get-schema -p production-ready-expressjs-server"
   },
   "husky": {
