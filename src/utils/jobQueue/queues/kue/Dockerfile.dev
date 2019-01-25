@@ -1,0 +1,14 @@
+FROM mhart/alpine-node:10
+
+ENV NODE_ENV development
+ENV DEBUG *info,*dev,*error
+
+# Create app directory
+WORKDIR /usr/src/app
+
+RUN npm install kue
+
+# Bundle app source
+COPY . .
+
+CMD ["npm", "./src/utils/jobQueue/queues/kue/dashboard.js"]
