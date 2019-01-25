@@ -38,7 +38,7 @@ services:
       - prisma  
   kue:
     build: 
-      context: .
+      context: ./src/utils/jobQueue/queues/kue
       dockerfile: Dockerfile.dev
     ports:
       - '3050:3050'
