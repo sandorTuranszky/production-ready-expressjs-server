@@ -64,6 +64,7 @@ I am always open to <a href="https://github.com/sandorTuranszky/production-ready
 - [Create account and connect to RedisLabs cloud instance using the FREE plan](#Create-account-and-connect-to-RedisLabs-cloud-instance-using-the-FREE-plan)
 - [Create account and setup Sentry error tracking](#Create-account-and-setup-Sentry-error-tracking)
 - [Create account and setup MailJet to send transactional emails](#Create-account-and-setup-MailJet-to-send-transactional-emails)
+- [Kue UI dashboard](#kue-ui-dashboard)
 - [Run server](#run-server-in-dev-mode)
 - [Test error handling](#test-error-handling)
 
@@ -123,6 +124,9 @@ You may also find [Securing production config files](https://github.com/lorenwes
   },
 ```
 - Important!!! You need to use a domain-based email address as an email sender (e.g. your project's domain name) to ensure emails are delivered to the inbox. Otherwise, they will end up in spam (including example@gmail.com once). In your MailJet account you can verify your email and take additional measures (e.g.SPF and DKIM settings) to ensure your emails are delivered.
+
+## Kue UI dashboard
+- The dashboard is available under `http://localhost:3050/active` or via nginx `http://localhost:3030/kue/active`
 
 ## Run server
 
