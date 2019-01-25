@@ -38,14 +38,13 @@ services:
       - prisma  
   kue:
     build: 
-      context: ./src/utils/jobQueue/queues/kue
-      dockerfile: Dockerfile.dev
+      context: .
+      dockerfile: ./src/utils/jobQueue/queues/kue/Dockerfile.dev
     ports:
       - '3050:3050'
     volumes:
       - /app/node_modules
       - .:/usr/src/app
-    command: ["npm", "run", "kue"]
   api:
     build:
       dockerfile: Dockerfile.dev

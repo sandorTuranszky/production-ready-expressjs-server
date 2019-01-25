@@ -6,8 +6,14 @@ ENV NODE_ENV=production
 WORKDIR /usr/src/app
 
 RUN npm install kue
+RUN npm install config
+RUN npm install winston
+RUN npm install morgan
+RUN npm install app-root-path
 
-# Bundle app source
-COPY . .
+# Copy certain folders and files
+COPY ./config /config
+COPY ./src /src
 
-CMD ["npm", "./src/utils/jobQueue/queues/kue/dashboard.js"]
+EXPOSE 3050
+CMD ["node", "./src/utils/jobQueue/queues/kue/dashboard.js"]
