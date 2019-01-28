@@ -1,3 +1,6 @@
-endpoint: http://prisma:4466
+endpoint: http://localhost:4466
 datamodel: datamodel.prisma
 databaseType: document
+hooks:
+  post-deploy:
+    - graphql get-schema -p production-ready-expressjs-server
