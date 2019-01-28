@@ -2,6 +2,7 @@
 
 const express = require('express');
 const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser-graphql');
 const helmet = require('helmet');
 const path = require('path');
 const config = require('config');
@@ -64,6 +65,7 @@ app.set('trust proxy', true);
  */
 app.use(stderrStream, stdoutStream);
 
+app.use(bodyParser.graphql());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());

@@ -11,7 +11,7 @@ WORKDIR /usr/src/app
 # where available (npm@5+)
 COPY package.json ./
 
-RUN npm install -g prisma --save
+RUN npm install -g prisma
 RUN npm install
 
 # Bundle app source
