@@ -99,6 +99,8 @@ You may also find [Securing production config files](https://github.com/lorenwes
 - Prisma serves as an ORM and to make it work you need to provide MongoDB connection string (you should have it from the previous step by now) in the `.env` file in the project root.
 - Schema is defined here `./prisma/datamodel.prisma`
 - Use `npm run get-schema` to download schema from endpoint to `./src/generated/prisma.graphql`
+- Prisma GraphQl playground is available here `http://localhost:4466`
+- Apollo server GraphQl playground - `http://localhost:3030/graphql`
 
 ## Create account and connect to RedisLabs cloud instance using the FREE plan
 - Create an account with [Redislabs](https://redislabs.com/get-started/) using the FREE plan (choose Cloud Hosted - free up to 30MB) and follow instructions [here](https://docs.redislabs.com/latest/rc/quick-setup-redis-cloud/)
