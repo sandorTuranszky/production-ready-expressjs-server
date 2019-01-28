@@ -19,7 +19,7 @@ This is a backend server for my project that is COMING SOON. It inspired by an i
 - Redis support `v1.2.0`
 - Settings to push images to docker hub (optional)
 - Sentry error tracking
-- GraphQl integration with [Prisma](https://www.prisma.io/)
+- GraphQl integration with [apollo-server-express](https://github.com/apollographql/apollo-server/tree/master/packages/apollo-server-express) and [Prisma](https://www.prisma.io/)
 - Priority job queue with [Kue](https://github.com/Automattic/kue) (e.g: for sending transactional emails). Queue implementation can be easily replaced with anything you prefer (apart from Kue). Emails (transactional) are sent with [mailjet](https://www.mailjet.com/) that offers 200 emails/day for free under the [Free](https://www.mailjet.com/pricing/) plan.
 - Follows best practices from <a href="https://github.com/i0natan/nodebestpractices" target="_blank">The largest Node.JS best practices list</a>
   - [Structure your solution by components](https://github.com/i0natan/nodebestpractices#-11-structure-your-solution-by-components)
