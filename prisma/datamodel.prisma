@@ -1,5 +1,7 @@
 type User {
   id: ID! @id
   name: String!
+  age: Int!
+  location: String!
   email: String! @unique
 }

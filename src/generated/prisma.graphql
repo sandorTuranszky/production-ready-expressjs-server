@@ -1,5 +1,5 @@
 # source: http://localhost:4466
-# timestamp: Tue Jan 22 2019 12:21:39 GMT+0100 (CET)
+# timestamp: Mon Jan 28 2019 14:54:46 GMT+0100 (CET)
 
 type AggregateUser {
   count: Int!
@@ -71,6 +71,8 @@ type Subscription {
 type User implements Node {
   id: ID!
   name: String!
+  age: Int!
+  location: String!
   email: String!
 }
 
@@ -86,6 +88,8 @@ type UserConnection {
 
 input UserCreateInput {
   name: String!
+  age: Int!
+  location: String!
   email: String!
 }
 
@@ -103,6 +107,10 @@ enum UserOrderByInput {
   id_DESC
   name_ASC
   name_DESC
+  age_ASC
+  age_DESC
+  location_ASC
+  location_DESC
   email_ASC
   email_DESC
 }
@@ -110,6 +118,8 @@ enum UserOrderByInput {
 type UserPreviousValues {
   id: ID!
   name: String!
+  age: Int!
+  location: String!
   email: String!
 }
 
@@ -148,11 +158,15 @@ input UserSubscriptionWhereInput {
 
 input UserUpdateInput {
   name: String
+  age: Int
+  location: String
   email: String
 }
 
 input UserUpdateManyMutationInput {
   name: String
+  age: Int
+  location: String
   email: String
 }
 
@@ -239,6 +253,68 @@ input UserWhereInput {
 
   """All values not ending with the given string."""
   name_not_ends_with: String
+  age: Int
+
+  """All values that are not equal to given value."""
+  age_not: Int
+
+  """All values that are contained in given list."""
+  age_in: [Int!]
+
+  """All values that are not contained in given list."""
+  age_not_in: [Int!]
+
+  """All values less than the given value."""
+  age_lt: Int
+
+  """All values less than or equal the given value."""
+  age_lte: Int
+
+  """All values greater than the given value."""
+  age_gt: Int
+
+  """All values greater than or equal the given value."""
+  age_gte: Int
+  location: String
+
+  """All values that are not equal to given value."""
+  location_not: String
+
+  """All values that are contained in given list."""
+  location_in: [String!]
+
+  """All values that are not contained in given list."""
+  location_not_in: [String!]
+
+  """All values less than the given value."""
+  location_lt: String
+
+  """All values less than or equal the given value."""
+  location_lte: String
+
+  """All values greater than the given value."""
+  location_gt: String
+
+  """All values greater than or equal the given value."""
+  location_gte: String
+
+  """All values containing the given string."""
+  location_contains: String
+
+  """All values not containing the given string."""
+  location_not_contains: String
+
+  """All values starting with the given string."""
+  location_starts_with: String
+
+  """All values not starting with the given string."""
+  location_not_starts_with: String
+
+  """All values ending with the given string."""
+  location_ends_with: String
+
+  """All values not ending with the given string."""
+  location_not_ends_with: String
   email: String
 
   """All values that are not equal to given value."""
