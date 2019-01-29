@@ -1,5 +1,5 @@
 # source: http://localhost:4466
-# timestamp: Tue Jan 29 2019 10:43:10 GMT+0100 (CET)
+# timestamp: Tue Jan 29 2019 11:28:12 GMT+0100 (CET)
 
 type AggregateUser {
   count: Int!
@@ -73,6 +73,7 @@ type User implements Node {
   name: String!
   location: String!
   email: String!
+  age: Int!
 }
 
 """A connection to a list of items."""
@@ -89,6 +90,7 @@ input UserCreateInput {
   name: String!
   location: String!
   email: String!
+  age: Int!
 }
 
 """An edge in a connection."""
@@ -109,6 +111,8 @@ enum UserOrderByInput {
   location_DESC
   email_ASC
   email_DESC
+  age_ASC
+  age_DESC
 }
 
 type UserPreviousValues {
@@ -116,6 +120,7 @@ type UserPreviousValues {
   name: String!
   location: String!
   email: String!
+  age: Int!
 }
 
 type UserSubscriptionPayload {
@@ -155,12 +160,14 @@ input UserUpdateInput {
   name: String
   location: String
   email: String
+  age: Int
 }
 
 input UserUpdateManyMutationInput {
   name: String
   location: String
   email: String
+  age: Int
 }
 
 input UserWhereInput {
@@ -326,6 +333,28 @@ input UserWhereInput {
 
   """All values not ending with the given string."""
   email_not_ends_with: String
+  age: Int
+
+  """All values that are not equal to given value."""
+  age_not: Int
+
+  """All values that are contained in given list."""
+  age_in: [Int!]
+
+  """All values that are not contained in given list."""
+  age_not_in: [Int!]
+
+  """All values less than the given value."""
+  age_lt: Int
+
+  """All values less than or equal the given value."""
+  age_lte: Int
+
+  """All values greater than the given value."""
+  age_gt: Int
+
+  """All values greater than or equal the given value."""
+  age_gte: Int
 }
 
 input UserWhereUniqueInput {

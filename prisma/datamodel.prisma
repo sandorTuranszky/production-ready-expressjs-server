@@ -3,4 +3,5 @@ type User {
   name: String!
   location: String!
   email: String! @unique
+  age: Int!
 }

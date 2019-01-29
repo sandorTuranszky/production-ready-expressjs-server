@@ -1,4 +1,4 @@
-endpoint: http://localhost:4466
+endpoint: ${env:PRISMA_URL}
 datamodel: datamodel.prisma
 databaseType: document
 hooks:

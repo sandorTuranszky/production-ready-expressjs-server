@@ -13,12 +13,14 @@ input CreateUserInput {
     name: String!
     email: String!
     location: String!
+    age: Int!
 }
 
 input UpdateUserInput {
     name: String
     email: String
     location: String
+    age: Int
 }
 
 type User {
@@ -26,4 +28,5 @@ type User {
     name: String!
     email: String!
     location: String!
+    age: Int!
 }
