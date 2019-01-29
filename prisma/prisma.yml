@@ -3,4 +3,4 @@ datamodel: datamodel.prisma
 databaseType: document
 hooks:
   post-deploy:
-    - graphql get-schema -p production-ready-expressjs-server
+    - graphql get-schema -p production-ready-expressjs-server --env-file .env

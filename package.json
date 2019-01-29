@@ -23,7 +23,7 @@
     "version:major": "npm version major",
     "push-tags": "git push --tags origin",
     "kue": "node ./src/utils/jobQueue/queues/kue/dashboard.js",
-    "get-schema": "graphql get-schema -p production-ready-expressjs-server"
+    "get-schema": "graphql get-schema -p production-ready-expressjs-server --env-file .env"
   },
   "husky": {
     "hooks": {
