@@ -11,7 +11,9 @@ const app = require('../src/app');
 /**
  * Connect DBs
  */
-createRedisClient();
+
+// Uncomment to connect to redis
+// createRedisClient();
 
 /**
  * Normalize a port into a number, string, or false.
