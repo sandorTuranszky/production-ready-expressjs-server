@@ -10,7 +10,7 @@ services:
     depends_on:
       - api
   prisma:
-    image: prismagraphql/prisma:1.24
+    image: prismagraphql/prisma:1.25
     restart: always
     ports:
     - "4466:4466"  

@@ -12,15 +12,18 @@ type Mutation {
 input CreateUserInput {
     name: String!
     email: String!
+    location: String!
 }
 
 input UpdateUserInput {
     name: String
     email: String
+    location: String
 }
 
 type User {
     id: ID!
     name: String!
     email: String!
+    location: String!
 }
