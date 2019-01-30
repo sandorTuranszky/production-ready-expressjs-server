@@ -4,14 +4,9 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser-graphql');
 const helmet = require('helmet');
-const path = require('path');
 const config = require('config');
 const Sentry = require('@sentry/node');
-const { ApolloServer } = require('apollo-server-express');
-const { importSchema } = require('graphql-import');
-const Query = require('./graphql/resolvers/Query');
-const Mutation = require('./graphql/resolvers/Mutation');
-const { prisma } = require('./db');
+const { initApolloServer } = require('./db');
 const packageJson = require('../package.json');
 const { stderrStream, stdoutStream } = require('./utils/logger/morgan');
 const {
@@ -70,25 +65,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-// Apollo server
-const typeDefs = importSchema(path.resolve('./src/graphql/schema.graphql'));
-const resolvers = {
-  Query,
-  Mutation,
-};
-
-const server = new ApolloServer({
-  typeDefs,
-  resolvers,
-  introspection: true,
-  playground: true,
-  context: req => ({
-    ...req,
-    prisma,
-  }),
-});
-server.applyMiddleware({ app });
-// Apollo server
+/**
+ * Initialize Apollo server
+ */
+initApolloServer(app);
 
 /**
  * ERROR HANDLING
