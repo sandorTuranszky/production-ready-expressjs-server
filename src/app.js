@@ -6,8 +6,8 @@ const bodyParser = require('body-parser-graphql');
 const helmet = require('helmet');
 const config = require('config');
 const Sentry = require('@sentry/node');
-// Const { initApolloServer } = require('./db');
 const packageJson = require('../package.json');
+const { apolloServer } = require('./apollo');
 const { stderrStream, stdoutStream } = require('./utils/logger/morgan');
 const {
   errorDecorator,
@@ -33,10 +33,22 @@ Sentry.init({
  */
 app.use(Sentry.Handlers.requestHandler());
 
-// /**
-//  * Initialize Apollo server
-//  */
-// InitApolloServer(app);
+/**
+ * Initialize Apollo server
+ */
+apolloServer.applyMiddleware({ app });
+
+/**
+ * Connect DBs
+ *
+ * Redis:
+ * const { createRedisClient } = require('../src/db');
+ * createRedisClient();
+ *
+ * MongoDb:
+ * const { mongodb } = require('../src/db');
+ * mongodb()
+ */
 
 /**
  * Require modules conditionally

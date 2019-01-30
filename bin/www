@@ -6,19 +6,7 @@ const http = require('http');
 const config = require('config');
 const winston = require('../src/utils/logger/winston');
 const app = require('../src/app');
-const { apolloServer } = require('../src/db');
-
-/**
- * Connect DBs
- * 
- * Redis:
- * const { createRedisClient } = require('../src/db');
- * createRedisClient();
- * 
- * MongoDb:
- * const { mongodb } = require('../src/db');
- * mongodb()
- */
+const { apolloServer } = require('../src/apollo');
 
 /**
  * Normalize a port into a number, string, or false.

@@ -3,11 +3,10 @@
 const path = require('path');
 const { ApolloServer, PubSub } = require('apollo-server-express');
 const { importSchema } = require('graphql-import');
-const app = require('../app');
 // Const { PubSub } = require('graphql-subscriptions');
 // Const { SubscriptionServer } = require('subscriptions-transport-ws');
 const winston = require('../utils/logger/winston');
-const { prisma } = require('./prisma');
+const { prisma } = require('../db/prisma');
 const Query = require('../graphql/resolvers/Query');
 const Mutation = require('../graphql/resolvers/Mutation');
 
@@ -35,9 +34,7 @@ const server = new ApolloServer({
   }),
 });
 
-server.applyMiddleware({ app });
-
 module.exports = {
-  pubSub,
   server,
+  pubSub,
 };
