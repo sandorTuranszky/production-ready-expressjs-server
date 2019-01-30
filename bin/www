@@ -5,15 +5,20 @@
 const http = require('http');
 const config = require('config');
 const winston = require('../src/utils/logger/winston');
-const { createRedisClient } = require('../src/db');
 const app = require('../src/app');
+const { apolloServer } = require('../src/db');
 
 /**
  * Connect DBs
+ * 
+ * Redis:
+ * const { createRedisClient } = require('../src/db');
+ * createRedisClient();
+ * 
+ * MongoDb:
+ * const { mongodb } = require('../src/db');
+ * mongodb()
  */
-
-// Uncomment to connect to redis
-// createRedisClient();
 
 /**
  * Normalize a port into a number, string, or false.
@@ -44,6 +49,11 @@ app.set('port', port);
  * Create HTTP server.
  */
 const server = http.createServer(app);
+
+/**
+ * Initialize Apollo server subscriptions
+ */
+apolloServer.installSubscriptionHandlers(server);
 
 /**
  * Event listener for HTTP server "error" event.
@@ -81,6 +91,8 @@ function onListening() {
   const addr = server.address();
   const bind = typeof addr === 'string' ? `pipe ${addr}` : `pipe ${addr.port}`;
   winston.info(`Listening on ${bind} in ${app.get('env')} environment`);
+  winston.info(`Server ready at http://localhost:${addr.port}${apolloServer.graphqlPath}`)
+  winston.info(`Subscriptions ready at ws://localhost:${addr.port}${apolloServer.subscriptionsPath}`)
 }
 
 /**

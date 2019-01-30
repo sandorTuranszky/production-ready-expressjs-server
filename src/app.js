@@ -6,7 +6,7 @@ const bodyParser = require('body-parser-graphql');
 const helmet = require('helmet');
 const config = require('config');
 const Sentry = require('@sentry/node');
-const { initApolloServer } = require('./db');
+// Const { initApolloServer } = require('./db');
 const packageJson = require('../package.json');
 const { stderrStream, stdoutStream } = require('./utils/logger/morgan');
 const {
@@ -32,6 +32,11 @@ Sentry.init({
  * SENTRY: The request handler must be the first middleware on the app
  */
 app.use(Sentry.Handlers.requestHandler());
+
+// /**
+//  * Initialize Apollo server
+//  */
+// InitApolloServer(app);
 
 /**
  * Require modules conditionally
@@ -64,11 +69,6 @@ app.use(bodyParser.graphql());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-
-/**
- * Initialize Apollo server
- */
-initApolloServer(app);
 
 /**
  * ERROR HANDLING

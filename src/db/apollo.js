@@ -1,8 +1,12 @@
 'use strict';
 
 const path = require('path');
-const { ApolloServer } = require('apollo-server-express');
+const { ApolloServer, PubSub } = require('apollo-server-express');
 const { importSchema } = require('graphql-import');
+const app = require('../app');
+// Const { PubSub } = require('graphql-subscriptions');
+// Const { SubscriptionServer } = require('subscriptions-transport-ws');
+const winston = require('../utils/logger/winston');
 const { prisma } = require('./prisma');
 const Query = require('../graphql/resolvers/Query');
 const Mutation = require('../graphql/resolvers/Mutation');
@@ -13,24 +17,27 @@ const resolvers = {
   Mutation,
 };
 
-let server = null;
+const pubSub = new PubSub();
 
-const initialize = app => {
-  server = new ApolloServer({
-    typeDefs,
-    resolvers,
-    introspection: true,
-    playground: true,
-    context: req => ({
-      ...req,
-      prisma,
-    }),
-  });
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  introspection: true, // Todo: check if required
+  playground: true, // Todo: check if required
+  tracing: true,
+  subscriptions: {
+    onConnect: () => winston.info('Connected to websocket'),
+    onDisconnect: webSocket => winston.info(`Disconnected from websocket ${webSocket}`),
+  },
+  context: req => ({
+    ...req,
+    prisma,
+  }),
+});
 
-  server.applyMiddleware({ app });
-};
+server.applyMiddleware({ app });
 
 module.exports = {
-  initialize,
+  pubSub,
   server,
 };
