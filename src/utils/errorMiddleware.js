@@ -17,10 +17,17 @@ const exitProcess = () => {
 
 /**
  * Catch 404 and forward to error handler
+ *
+ * Exception for '/graphql' route is made to enable access to Apollo server playground.
+ * This is required because Apollo server is initialized after the 404 error handler is defined.
+ * This is not ideal and once issues #1296 and #2246 with apollo-server-express package are resolved,
+ * the Apollo server initialization can be move to app.js before error handlers are defined.
+ *
+ * @url https://github.com/apollographql/apollo-server/issues/1296
+ * @url https://github.com/apollographql/apollo-server/issues/2246
  */
-const notFoundErrorHandler = (req, res, next) => {
-  next(boom.notFound('Not Found'));
-};
+const notFoundErrorHandler = (req, res, next) =>
+  next(req.originalUrl.includes('/graphql') ? '' : boom.notFound('Not Found'));
 
 /**
  * The 'unhandledRejection' event is emitted whenever a Promise is rejected and

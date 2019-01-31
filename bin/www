@@ -9,6 +9,11 @@ const app = require('../src/app');
 const { apolloServer } = require('../src/apollo');
 
 /**
+ * Initialize Apollo server
+ */
+apolloServer.applyMiddleware({ app, path: '/graphql' });
+
+/**
  * Normalize a port into a number, string, or false.
  */
 function normalizePort(val) {

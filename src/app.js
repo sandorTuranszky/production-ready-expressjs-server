@@ -7,7 +7,6 @@ const helmet = require('helmet');
 const config = require('config');
 const Sentry = require('@sentry/node');
 const packageJson = require('../package.json');
-const { apolloServer } = require('./apollo');
 const { stderrStream, stdoutStream } = require('./utils/logger/morgan');
 const {
   errorDecorator,
@@ -32,11 +31,6 @@ Sentry.init({
  * SENTRY: The request handler must be the first middleware on the app
  */
 app.use(Sentry.Handlers.requestHandler());
-
-/**
- * Initialize Apollo server
- */
-apolloServer.applyMiddleware({ app });
 
 /**
  * Connect DBs
