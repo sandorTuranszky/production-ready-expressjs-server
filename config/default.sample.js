@@ -19,6 +19,9 @@ module.exports = {
       retryStrategy: 1000,
     },
   },
+  apollo: {
+    playgroundPath: '/graphql',
+  },
   mailjet: {
     api_key: 'your-mailjet-api-key',
     secret: 'your-mailjet-secret',

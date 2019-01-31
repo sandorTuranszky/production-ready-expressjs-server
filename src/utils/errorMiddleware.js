@@ -2,6 +2,7 @@
 
 const boom = require('boom');
 const Sentry = require('@sentry/node');
+const config = require('config');
 const winston = require('./logger/winston');
 
 /**
@@ -26,8 +27,8 @@ const exitProcess = () => {
  * @url https://github.com/apollographql/apollo-server/issues/1296
  * @url https://github.com/apollographql/apollo-server/issues/2246
  */
-const notFoundErrorHandler = (req, res, next) =>
-  next(req.originalUrl.includes('/graphql') ? '' : boom.notFound('Not Found'));
+const notFoundErrorHandler = ({ originalUrl }, res, next) =>
+  next(originalUrl.includes(config.get('apollo.playgroundPath')) ? '' : boom.notFound('Not Found'));
 
 /**
  * The 'unhandledRejection' event is emitted whenever a Promise is rejected and

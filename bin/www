@@ -11,7 +11,7 @@ const { apolloServer } = require('../src/apollo');
 /**
  * Initialize Apollo server
  */
-apolloServer.applyMiddleware({ app, path: '/graphql' });
+apolloServer.applyMiddleware({ app, path: config.get('apollo.playgroundPath') });
 
 /**
  * Normalize a port into a number, string, or false.
