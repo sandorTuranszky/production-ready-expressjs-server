@@ -11,29 +11,47 @@ const {
 
 describe('Error handlers from errorMiddleware', () => {
   describe('Function notFoundErrorHandler', () => {
-    const next = jest.fn();
-    beforeAll(() => {
-      notFoundErrorHandler(null, null, next);
-    });
-    test('should call next() with Boom error object as an argument', () => {
-      expect(next.mock.calls).toHaveLength(1);
-      expect(next.mock.calls[0][0].isBoom).toBe(true);
-    });
+    describe('OriginalUrl is other than /graphql', () => {
+      const next = jest.fn();
+      const req = {
+        originalUrl: '/',
+      };
+      beforeAll(() => {
+        notFoundErrorHandler(req, null, next);
+      });
+      test('should call next() with Boom error object as an argument', () => {
+        expect(next.mock.calls).toHaveLength(1);
+        expect(next.mock.calls[0][0].isBoom).toBe(true);
+      });
 
-    test('should not have "isDeveloperError" property defined as Boom error object property', () => {
-      expect(next.mock.calls[0][0].isDeveloperError).toBeUndefined();
-    });
+      test('should not have "isDeveloperError" property defined as Boom error object property', () => {
+        expect(next.mock.calls[0][0].isDeveloperError).toBeUndefined();
+      });
 
-    test('should have 404 set for Boom error object "statusCode" property', () => {
-      expect(next.mock.calls[0][0].output.statusCode).toBe(404);
-    });
+      test('should have 404 set for Boom error object "statusCode" property', () => {
+        expect(next.mock.calls[0][0].output.statusCode).toBe(404);
+      });
 
-    test('should have "Not Found" error message set for Boom error object "message" properties', () => {
-      expect(next.mock.calls[0][0].output.payload.message).toBe('Not Found');
-    });
+      test('should have "Not Found" error message set for Boom error object "message" properties', () => {
+        expect(next.mock.calls[0][0].output.payload.message).toBe('Not Found');
+      });
 
-    test('should have a false value set for Boom error object "isServer" properties', () => {
-      expect(next.mock.calls[0][0].isServer).toBe(false);
+      test('should have a false value set for Boom error object "isServer" properties', () => {
+        expect(next.mock.calls[0][0].isServer).toBe(false);
+      });
+    });
+    describe('OriginalUrl is other is /graphql', () => {
+      const next = jest.fn();
+      const req = {
+        originalUrl: '/graphql',
+      };
+      beforeAll(() => {
+        notFoundErrorHandler(req, null, next);
+      });
+      test('should call next() without any argument', () => {
+        expect(next.mock.calls).toHaveLength(1);
+        expect(next.mock.calls[0][0]).toBe('');
+      });
     });
   });
 
