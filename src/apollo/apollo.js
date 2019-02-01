@@ -3,8 +3,6 @@
 const path = require('path');
 const { ApolloServer, PubSub } = require('apollo-server-express');
 const { importSchema } = require('graphql-import');
-// Const { PubSub } = require('graphql-subscriptions');
-// Const { SubscriptionServer } = require('subscriptions-transport-ws');
 const winston = require('../utils/logger/winston');
 const { prisma } = require('../db/prisma');
 const Query = require('../graphql/resolvers/Query');
