@@ -23,9 +23,7 @@ const pubSub = new PubSub();
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  introspection: true, // Todo: check if required
-  playground: true, // Todo: check if required
-  tracing: true,
+  tracing: true, // Add tracing or cacheControl meta data to the GraphQL response @url https://www.apollographql.com/docs/apollo-server/api/apollo-server.html
   subscriptions: {
     onConnect: () => winston.info('Connected to websocket'),
     onDisconnect: webSocket => winston.info(`Disconnected from websocket ${webSocket}`),
