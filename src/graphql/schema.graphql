@@ -32,7 +32,8 @@ type User {
 }
 
 type Subscription {
-    user(userId: ID!): UserSubscriptionPayload!
+    userCreated: UserSubscriptionPayload
+    userUpdated(userId: ID!): UserSubscriptionPayload!
 }
 
 enum MutationType {

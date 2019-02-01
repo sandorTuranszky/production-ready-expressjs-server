@@ -1,7 +1,12 @@
 'use strict';
 
 const Subscription = {
-  user: {
+  userCreated: {
+    subscribe(parent, args, { prisma }, info) {
+      return prisma.subscription.user({}, info);
+    },
+  },
+  userUpdated: {
     subscribe(parent, { userId }, { prisma }, info) {
       return prisma.subscription.user(
         {
