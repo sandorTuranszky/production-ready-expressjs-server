@@ -19,7 +19,7 @@ This is a backend server for my project that is COMING SOON. It inspired by an i
 - Redis support `v1.2.0`
 - Settings to push images to docker hub (optional)
 - Sentry error tracking
-- GraphQl integration with [apollo-server-express](https://github.com/apollographql/apollo-server/tree/master/packages/apollo-server-express) and [Prisma](https://www.prisma.io/)
+- GraphQl integration with [apollo-server-express] and [Prisma](https://github.com/apollographql/apollo-server/tree/master/packages/apollo-server-express) and [Prisma](https://www.prisma.io/)
 - Priority job queue with [Kue](https://github.com/Automattic/kue) (e.g: for sending transactional emails). Queue implementation can be easily replaced with anything you prefer (apart from Kue). Emails (transactional) are sent with [mailjet](https://www.mailjet.com/) that offers 200 emails/day for free under the [Free](https://www.mailjet.com/pricing/) plan.
 - Follows best practices from <a href="https://github.com/i0natan/nodebestpractices" target="_blank">The largest Node.JS best practices list</a>
   - [Structure your solution by components](https://github.com/i0natan/nodebestpractices#-11-structure-your-solution-by-components)
@@ -65,7 +65,8 @@ I am always open to <a href="https://github.com/sandorTuranszky/production-ready
 - [Create account and setup Sentry error tracking](#Create-account-and-setup-Sentry-error-tracking)
 - [Create account and setup MailJet to send transactional emails](#Create-account-and-setup-MailJet-to-send-transactional-emails)
 - [Kue UI dashboard](#kue-ui-dashboard)
-- [Run server](#run-server-in-dev-mode)
+- [Run server](#run-server)
+- [Making changes to Graphql schemas](#making-changes-to-Graphql-schemas)
 - [Test error handling](#test-error-handling)
 
 ## Additional settings
@@ -98,7 +99,7 @@ You may also find [Securing production config files](https://github.com/lorenwes
 ## Set up Prisma
 - Prisma serves as an ORM and to make it work you need to provide MongoDB connection string (you should have it from the previous step by now) in the `.env` file in the project root.
 - Schema is defined here `./prisma/datamodel.prisma`
-- Use `npm run get-schema` to download schema from endpoint to `./src/generated/prisma.graphql`. I will run automatically on `prisma deploy` or `(npm run deploy)` as it is set up in `post-deploy` hook in prisma.yml
+- Use `npm run get-schema` to download schema from endpoint to `./src/generated/prisma.graphql`. Note that it will run automatically on `prisma deploy` or `(npm run deploy)` as it is set up in `post-deploy` hook in `/prisma/prisma.yml`
 - Prisma GraphQl playground is available here `http://localhost:4466`
 - Apollo server GraphQl playground - `http://localhost:3030/graphql`
 
@@ -142,6 +143,13 @@ You may also find [Securing production config files](https://github.com/lorenwes
 - `npm run test:int` - run integration tests
 - `npm run coverage` - test coverage
 - `npm run lint` - lint
+
+## Making changes to Graphql schemas
+
+- update/add data model `/prisma/datamodel.prisma`
+- update/add schema `/src/graphql/schema.graphql`
+- update/add queries, mutations or subscriptions `/src/graphql/resolvers/`
+- run `npm run deploy` to update prisma data model and generate schema in `/generated`
 
 ## Test error handling
 
