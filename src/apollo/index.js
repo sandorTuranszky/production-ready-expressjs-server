@@ -1,8 +1,7 @@
 'use strict';
 
-const { server: apolloServer, pubSub } = require('./apollo');
+const { server: apolloServer } = require('./apollo');
 
 module.exports = {
   apolloServer,
-  pubSub,
 };

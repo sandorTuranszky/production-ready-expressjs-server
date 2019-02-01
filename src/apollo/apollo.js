@@ -9,11 +9,13 @@ const winston = require('../utils/logger/winston');
 const { prisma } = require('../db/prisma');
 const Query = require('../graphql/resolvers/Query');
 const Mutation = require('../graphql/resolvers/Mutation');
+const Subscription = require('../graphql/resolvers/Subscription');
 
 const typeDefs = importSchema(path.resolve('./src/graphql/schema.graphql'));
 const resolvers = {
   Query,
   Mutation,
+  Subscription,
 };
 
 const pubSub = new PubSub();
@@ -30,11 +32,11 @@ const server = new ApolloServer({
   },
   context: req => ({
     ...req,
+    pubSub,
     prisma,
   }),
 });
 
 module.exports = {
   server,
-  pubSub,
 };

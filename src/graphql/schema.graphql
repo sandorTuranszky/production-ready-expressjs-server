@@ -30,3 +30,18 @@ type User {
     location: String!
     age: Int!
 }
+
+type Subscription {
+    user(userId: ID!): UserSubscriptionPayload!
+}
+
+enum MutationType {
+    CREATED
+    UPDATED
+    DELETED
+}
+
+type UserSubscriptionPayload {
+    mutation: MutationType!
+    node: User!
+}
