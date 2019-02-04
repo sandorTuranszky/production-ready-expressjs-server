@@ -23,7 +23,9 @@
     "version:major": "npm version major",
     "push-tags": "git push --tags origin",
     "kue": "node ./src/utils/jobQueue/queues/kue/dashboard.js",
-    "get-schema": "graphql get-schema -p production-ready-expressjs-server --env-file .env"
+    "get-schema": "graphql get-schema -p production-ready-expressjs-server --env-file .env",
+    "get-prisma-token": "cd ./prisma && prisma token --env-file ../.env",
+    "clear-db": "cd ./prisma && prisma delete --env-file ../.env"
   },
   "husky": {
     "hooks": {

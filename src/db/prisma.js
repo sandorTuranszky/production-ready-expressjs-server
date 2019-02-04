@@ -7,6 +7,7 @@ const port = 4466;
 const prisma = new Prisma({
   typeDefs: 'src/generated/prisma.graphql',
   endpoint: `http://prisma:${port}`,
+  secret: 'putYourSuperSecretTextHere',
 });
 
 module.exports = {

@@ -1,6 +1,8 @@
 endpoint: ${env:PRISMA_URL}
 datamodel: datamodel.prisma
 databaseType: document
+secret: putYourSuperSecretTextHere
+
 hooks:
   post-deploy:
-    - graphql get-schema -p production-ready-expressjs-server --env-file .env
+    npm run get-schema

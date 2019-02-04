@@ -69,6 +69,9 @@ I am always open to <a href="https://github.com/sandorTuranszky/production-ready
 - [Making changes to Graphql schemas](#making-changes-to-Graphql-schemas)
 - [Test error handling](#test-error-handling)
 
+## Security in production
+- Closing prisma to the outside world(#closing-prisma-to-the-outside-world)
+
 ## Additional settings
 - [Pushing images to docker hub (optional)](#pushing-images-to-docker-hub)
 
@@ -160,6 +163,37 @@ You may also find [Securing production config files](https://github.com/lorenwes
 ## Error handling implementation explained
 
 - [Error handling Wiki](https://github.com/sandorTuranszky/production-ready-ExpressJs-server/wiki/Error-handling)
+
+## Closing prisma to the outside world
+- Add your secret in `prisma/prisma.yml`
+
+```
+secret: putYourSuperSecretTextHere
+
+```
+
+- Add the same secret in `src/db/prisma.js`
+
+```
+secret: 'putYourSuperSecretTextHere',
+
+```
+
+- run `npm run deploy`
+
+Now the `http://localhost:3030/graphql` endpoint will work as expected. 
+
+However the `http://localhost:4466` will return `"Your token is invalid"` error. To be able to use it, you need to generate an authorization token and use it in HTTP headers. Here is how you do it:
+- run `npm run get-prisma-token`
+- copy the generated token
+- insert the following HTTP headers (bottom left corner) in graphql playground under `http://localhost:4466`
+
+```
+{
+  "Authorization":"Bearer 'generated token'" // mind the space between "Bearer" and the token
+}
+```
+
 
 ## Pushing images to docker hub
   To push images to [Docker Hub](https://hub.docker.com/) you need to provide your Docker user name and password as environment variables.

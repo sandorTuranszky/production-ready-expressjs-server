@@ -1,5 +1,5 @@
 # source: http://localhost:4466
-# timestamp: Tue Jan 29 2019 22:02:07 GMT+0100 (CET)
+# timestamp: Mon Feb 04 2019 14:56:37 GMT+0100 (CET)
 
 type AggregateUser {
   count: Int!
@@ -71,9 +71,8 @@ type Subscription {
 type User implements Node {
   id: ID!
   name: String!
-  location: String!
   email: String!
-  age: Int!
+  password: String!
 }
 
 """A connection to a list of items."""
@@ -88,9 +87,8 @@ type UserConnection {
 
 input UserCreateInput {
   name: String!
-  location: String!
   email: String!
-  age: Int!
+  password: String!
 }
 
 """An edge in a connection."""
@@ -107,20 +105,17 @@ enum UserOrderByInput {
   id_DESC
   name_ASC
   name_DESC
-  location_ASC
-  location_DESC
   email_ASC
   email_DESC
-  age_ASC
-  age_DESC
+  password_ASC
+  password_DESC
 }
 
 type UserPreviousValues {
   id: ID!
   name: String!
-  location: String!
   email: String!
-  age: Int!
+  password: String!
 }
 
 type UserSubscriptionPayload {
@@ -158,16 +153,14 @@ input UserSubscriptionWhereInput {
 
 input UserUpdateInput {
   name: String
-  location: String
   email: String
-  age: Int
+  password: String
 }
 
 input UserUpdateManyMutationInput {
   name: String
-  location: String
   email: String
-  age: Int
+  password: String
 }
 
 input UserWhereInput {
@@ -253,46 +246,6 @@ input UserWhereInput {
 
   """All values not ending with the given string."""
   name_not_ends_with: String
-  location: String
-
-  """All values that are not equal to given value."""
-  location_not: String
-
-  """All values that are contained in given list."""
-  location_in: [String!]
-
-  """All values that are not contained in given list."""
-  location_not_in: [String!]
-
-  """All values less than the given value."""
-  location_lt: String
-
-  """All values less than or equal the given value."""
-  location_lte: String
-
-  """All values greater than the given value."""
-  location_gt: String
-
-  """All values greater than or equal the given value."""
-  location_gte: String
-
-  """All values containing the given string."""
-  location_contains: String
-
-  """All values not containing the given string."""
-  location_not_contains: String
-
-  """All values starting with the given string."""
-  location_starts_with: String
-
-  """All values not starting with the given string."""
-  location_not_starts_with: String
-
-  """All values ending with the given string."""
-  location_ends_with: String
-
-  """All values not ending with the given string."""
-  location_not_ends_with: String
   email: String
 
   """All values that are not equal to given value."""
@@ -333,28 +286,46 @@ input UserWhereInput {
 
   """All values not ending with the given string."""
   email_not_ends_with: String
-  age: Int
+  password: String
 
   """All values that are not equal to given value."""
-  age_not: Int
+  password_not: String
 
   """All values that are contained in given list."""
-  age_in: [Int!]
+  password_in: [String!]
 
   """All values that are not contained in given list."""
-  age_not_in: [Int!]
+  password_not_in: [String!]
 
   """All values less than the given value."""
-  age_lt: Int
+  password_lt: String
 
   """All values less than or equal the given value."""
-  age_lte: Int
+  password_lte: String
 
   """All values greater than the given value."""
-  age_gt: Int
+  password_gt: String
 
   """All values greater than or equal the given value."""
-  age_gte: Int
+  password_gte: String
+
+  """All values containing the given string."""
+  password_contains: String
+
+  """All values not containing the given string."""
+  password_not_contains: String
+
+  """All values starting with the given string."""
+  password_starts_with: String
+
+  """All values not starting with the given string."""
+  password_not_starts_with: String
+
+  """All values ending with the given string."""
+  password_ends_with: String
+
+  """All values not ending with the given string."""
+  password_not_ends_with: String
 }
 
 input UserWhereUniqueInput {
