@@ -4,15 +4,21 @@ type Query {
 }
 
 type Mutation {
-    createUser(data: CreateUserInput!): User!
-    deleteUser(id: ID!): User!
+    signUp(data: signUpInput!): AuthPayload
+    login(data: loginUpInput!): AuthPayload
     updateUser(id: ID!, data: UpdateUserInput!): User!
+    deleteUser(id: ID!): User!
 }
 
-input CreateUserInput {
+input signUpInput {
     name: String!
     email: String!
     password: String!
+}
+
+input loginUpInput {
+    name: String!
+    email: String!
 }
 
 input UpdateUserInput {
@@ -20,11 +26,15 @@ input UpdateUserInput {
     email: String
 }
 
+type AuthPayload {
+    token: String
+    user: User
+}
+
 type User {
     id: ID!
     name: String!
     email: String!
-    password: String!
 }
 
 type Subscription {

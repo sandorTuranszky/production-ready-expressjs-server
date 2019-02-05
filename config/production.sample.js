@@ -3,6 +3,7 @@
 module.exports = {
   app: {
     port: 7000,
+    secret: 'shouldBeSecret', // Should be changed to something unique
     logging: {
       file: false,
     },
