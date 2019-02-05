@@ -21,11 +21,12 @@ const Mutation = {
       user,
     };
   },
-  async login(parent, args, context, info) {
-    const user = await context.prisma.query.users({ email: args.email }, info);
+  async login(parent, { data }, { prisma }, info) {
+    const { email, password } = data;
+    const user = await prisma.query.user({ where: { email } }, info);
     if (!user) throw new Error('User not found');
 
-    const valid = await bcrypt.compare(args.password, user.password);
+    const valid = await bcrypt.compare(password, user.password);
     if (!valid) throw new Error('Invalid password');
 
     const token = jwt.sign({ userId: user.id }, config.get('app.secret'));
