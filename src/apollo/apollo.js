@@ -1,20 +1,9 @@
 'use strict';
 
-const path = require('path');
 const { ApolloServer, PubSub } = require('apollo-server-express');
-const { importSchema } = require('graphql-import');
 const winston = require('../utils/logger/winston');
 const { prisma } = require('../db/prisma');
-const Query = require('../graphql/resolvers/Query');
-const Mutation = require('../graphql/resolvers/Mutation');
-const Subscription = require('../graphql/resolvers/Subscription');
-
-const typeDefs = importSchema(path.resolve('./src/graphql/schema.graphql'));
-const resolvers = {
-  Query,
-  Mutation,
-  Subscription,
-};
+const { typeDefs, resolvers, fragmentReplacements } = require('../graphql/resolvers');
 
 const pubSub = new PubSub();
 
@@ -31,6 +20,7 @@ const server = new ApolloServer({
     pubSub,
     prisma,
   }),
+  fragmentReplacements,
 });
 
 module.exports = {

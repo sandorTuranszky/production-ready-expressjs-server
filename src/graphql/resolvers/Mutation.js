@@ -3,6 +3,7 @@
 const bcrypt = require('bcryptjs');
 const config = require('config');
 const jwt = require('jsonwebtoken');
+const { getUserId } = require('../utils');
 
 const errorMsg = 'Wrong email or password';
 
