@@ -44,6 +44,7 @@ const Mutation = {
     };
   },
   async deleteUser(parent, args, { prisma }, info) {
+    const userId = getUserId({ req });//eslint-disable-line
     return prisma.mutation.deleteUser(
       {
         where: {
@@ -54,6 +55,7 @@ const Mutation = {
     );
   },
   updateUser(parent, args, { prisma }, info) {
+    const userId = getUserId({ req });//eslint-disable-line
     return prisma.mutation.updateUser(
       {
         where: {
