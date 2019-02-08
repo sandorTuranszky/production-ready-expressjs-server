@@ -43,23 +43,23 @@ const Mutation = {
       token,
     };
   },
-  async deleteUser(parent, args, { prisma }, info) {
+  async deleteUser(parent, args, { prisma, req }, info) {
     const userId = getUserId({ req });//eslint-disable-line
     return prisma.mutation.deleteUser(
       {
         where: {
-          id: args.id,
+          id: userId,
         },
       },
       info,
     );
   },
-  updateUser(parent, args, { prisma }, info) {
+  updateUser(parent, args, { prisma, req }, info) {
     const userId = getUserId({ req });//eslint-disable-line
     return prisma.mutation.updateUser(
       {
         where: {
-          id: args.id,
+          id: userId,
         },
         data: args.data,
       },

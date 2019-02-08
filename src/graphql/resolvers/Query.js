@@ -3,16 +3,17 @@
 const { getUserId } = require('../utils');
 
 const Query = {
-  users(parent, args, { prisma, req }, info) {
-    const userId = getUserId({ req });//eslint-disable-line
+  users(parent, args, { prisma }, info) {
     return prisma.query.users(null, info);
   },
-  me() {
-    return {
-      id: '',
-      name: '',
-      email: '',
-    };
+  me(parent, args, { prisma, req }, info) {//eslint-disable-line
+    const userId = getUserId({ req });
+
+    return prisma.query.user({
+      where: {
+        id: userId,
+      },
+    });
   },
 };
 

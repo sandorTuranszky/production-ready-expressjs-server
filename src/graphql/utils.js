@@ -3,7 +3,8 @@
 const config = require('config');
 const jwt = require('jsonwebtoken');
 
-function getUserId(context) {
+// eslint-disable-next-line consistent-return
+const getUserId = (context, requireAuth = true) => {
   const Authorization = context.req.get('Authorization');
   if (Authorization) {
     const token = Authorization.replace('Bearer ', '');
@@ -11,8 +12,8 @@ function getUserId(context) {
     return userId;
   }
 
-  throw new Error('Not authenticated');
-}
+  if (requireAuth) throw new Error('Not authenticated');
+};
 
 module.exports = {
   getUserId,
