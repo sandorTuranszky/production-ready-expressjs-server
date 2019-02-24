@@ -12,7 +12,7 @@ const mailjet = require('node-mailjet').connect(
   config.get('mailjet.secret'),
 );
 
-const send = data =>
+const sendEmail = data =>
   mailjet.post('send', { version: 'v3.1' }).request({
     Messages: [
       {
@@ -34,5 +34,5 @@ const send = data =>
   });
 
 module.exports = {
-  send,
+  sendEmail,
 };

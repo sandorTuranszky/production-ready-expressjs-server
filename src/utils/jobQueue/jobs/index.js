@@ -3,7 +3,8 @@
 /**
  * Entry point for all jobs.
  */
-const { email } = require('./queues');
+
+const email = require('./email');
 
 module.exports = {
   email,

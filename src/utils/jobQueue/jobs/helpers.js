@@ -9,7 +9,9 @@ const validateProps = (args, props) => {
   const { data } = args;
   const keys = Object.keys(data);
   const errors = props.filter(prop => keys.indexOf(prop) === -1);
-  return errors.length > 0 ? errors : false;
+  const formattedErrors = errors.map(prop => `Property ${prop} is required to send an email`);
+
+  return formattedErrors.length > 0 ? formattedErrors : false;
 };
 
 module.exports = {

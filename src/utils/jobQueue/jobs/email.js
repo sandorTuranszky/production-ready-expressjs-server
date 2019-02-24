@@ -16,62 +16,68 @@
 const boom = require('boom');
 const winston = require('../../logger/winston');
 const { validateProps } = require('./helpers');
-const { queue, defaults, saveTask } = require('../queues');
 const { send } = require('../integrations');
-
-const presetTemplates = {
-  welcome: 'welcome-template',
-};
 
 /**
  * Required properties
  */
 const props = ['subject', 'to', 'body'];
 
-const createTask = args => validateProps(args, props) || saveTask(args);
+/**
+ * Preset templates
+ */
+const presetTemplates = {
+  welcome: 'welcomeTemplate',
+  emailVerification: 'emailVerification',
+  default: 'default',
+};
 
-const sendEmail = data => createTask({ type: 'email', ...data });
+const manageTemplate = data => ({
+  ...{ ...data, template: presetTemplates[data.template] || presetTemplates.default },
+});
 
 /**
- * Preset email template
+ * Validate Email
  * @param {*} data
- * @param {*} options
  */
-const sendWelcomeEmail = (data, options) =>
-  sendEmail({
-    data: { ...data, ...{ template: presetTemplates.welcome } },
-    options,
-  });
+const validate = data => validateProps(data, props);
 
 /**
  * Success handler
  * @param {*} result
  * @param {*} done
  */
-const handleResult = (result, done) => {
+const handleSuccess = (result, cb) => {
   winston.info(`Email sent: ${JSON.stringify(result)}`);
-  done();
+  if (cb && typeof cb === 'function') cb();
 };
 
 /**
  * Error handler
  * @param {*} err
  */
-const handleError = err => {
+const handleError = err =>
   winston.error(`Error occurred during sending email: ${boom.boomify(err)}`);
+
+/**
+ * Send email
+ * @param {*} data
+ *
+ * Returns promise
+ */
+const process = data => {
+  const email = manageTemplate(data);
+  const invalidEmail = validate(email);
+  if (invalidEmail) throw new Error(invalidEmail);
+
+  return send(email);
 };
 
 /**
- * Kue and mailjet specific implementation
+ * All jobs must expose the following interface
  */
-// eslint-disable-next-line no-unused-vars
-queue.process('email', defaults.email.concurrency, (job, done) => {
-  send(job.data)
-    .then(result => handleResult(result, done))
-    .catch(handleError);
-});
-
 module.exports = {
-  sendEmail,
-  sendWelcomeEmail,
+  process,
+  handleSuccess,
+  handleError,
 };

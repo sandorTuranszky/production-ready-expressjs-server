@@ -1,9 +1,8 @@
 'use strict';
 
-const { queue, defaults, saveTask } = require('./kue');
+const { queue, email } = require('./kue');
 
 module.exports = {
-  queue,
-  defaults,
-  saveTask,
+  queue, // Queue instance
+  email,
 };

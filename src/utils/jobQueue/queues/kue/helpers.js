@@ -7,7 +7,7 @@ const kue = require('kue');
 const boom = require('boom');
 const config = require('config');
 const winston = require('../../../logger/winston');
-const { defaultOptions } = require('./config');
+const { defaults } = require('./config');
 
 const queue = kue.createQueue({
   redis: config.get('db.redis.url'),
@@ -17,9 +17,9 @@ const queue = kue.createQueue({
  * Save task
  * @param {*} args
  */
-const saveTask = args => {
-  const { type, data, options } = args;
-  const { delay, priority, attempts, remove } = { ...defaultOptions(type), ...options };
+const saveJob = args => {
+  const { type, data, options = {} } = args;
+  const { delay, priority, attempts, remove } = { ...defaults, ...options };
   const job = queue
     .create(type, data)
     .delay(delay)
@@ -47,6 +47,6 @@ const removeJobs = id => {
 };
 
 module.exports = {
-  saveTask,
+  saveJob,
   removeJobs,
 };

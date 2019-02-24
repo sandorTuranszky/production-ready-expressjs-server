@@ -16,6 +16,8 @@ const {
   uncaughtExceptionHandler,
 } = require('./utils/errorMiddleware');
 
+const { email } = require('./utils/jobQueue');
+
 const app = express();
 
 /**
@@ -75,6 +77,12 @@ app.use(bodyParser.graphql());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+//
+email.send({
+  data: { to: 'sandor.turanszky+opensource@gmail.com', subject: 'test subject', body: 'test body' },
+});
+//
 
 /**
  * ERROR HANDLING

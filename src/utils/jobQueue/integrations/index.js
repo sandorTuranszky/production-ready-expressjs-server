@@ -1,6 +1,6 @@
 'use strict';
 
-const { send } = require('./mailjet');
+const { sendEmail: send } = require('./mailjet');
 
 module.exports = {
   send,
