@@ -16,8 +16,8 @@
 const boom = require('boom');
 const winston = require('../../logger/winston');
 const { validateProps } = require('./helpers');
-const { queue, defaults, saveTask } = require('../queues/kue');
-const { send } = require('../integrations/mailjet');
+const { queue, defaults, saveTask } = require('../queues');
+const { send } = require('../integrations');
 
 const presetTemplates = {
   welcome: 'welcome-template',
