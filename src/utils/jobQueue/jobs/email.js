@@ -70,7 +70,7 @@ const process = data => {
   const invalidEmail = validate(email);
   if (invalidEmail) throw new Error(invalidEmail);
 
-  return send(email);
+  return send(email.data);
 };
 
 /**
