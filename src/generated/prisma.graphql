@@ -1,5 +1,5 @@
 # source: http://localhost:4466
-# timestamp: Tue Feb 26 2019 15:34:48 GMT+0100 (CET)
+# timestamp: Tue Feb 26 2019 18:45:42 GMT+0100 (CET)
 
 type AggregateUser {
   count: Int!
@@ -13,6 +13,8 @@ type BatchPayload {
   """The number of nodes that have been affected by the Batch operation."""
   count: Long!
 }
+
+scalar DateTime
 
 """
 The `Long` scalar type represents non-fractional signed whole numeric values.
@@ -87,6 +89,7 @@ type User implements Node {
   name: String!
   email: String!
   password: String!
+  emailVerified: Boolean!
 }
 
 """A connection to a list of items."""
@@ -103,6 +106,7 @@ input UserCreateInput {
   name: String!
   email: String!
   password: String!
+  emailVerified: Boolean
 }
 
 """An edge in a connection."""
@@ -123,6 +127,8 @@ enum UserOrderByInput {
   email_DESC
   password_ASC
   password_DESC
+  emailVerified_ASC
+  emailVerified_DESC
 }
 
 type UserPreviousValues {
@@ -130,6 +136,7 @@ type UserPreviousValues {
   name: String!
   email: String!
   password: String!
+  emailVerified: Boolean!
 }
 
 type UserSubscriptionPayload {
@@ -169,12 +176,14 @@ input UserUpdateInput {
   name: String
   email: String
   password: String
+  emailVerified: Boolean
 }
 
 input UserUpdateManyMutationInput {
   name: String
   email: String
   password: String
+  emailVerified: Boolean
 }
 
 input UserWhereInput {
@@ -340,6 +349,10 @@ input UserWhereInput {
 
   """All values not ending with the given string."""
   password_not_ends_with: String
+  emailVerified: Boolean
+
+  """All values that are not equal to given value."""
+  emailVerified_not: Boolean
 }
 
 input UserWhereUniqueInput {
@@ -349,7 +362,9 @@ input UserWhereUniqueInput {
 
 type VerificationToken implements Node {
   id: ID!
+  userId: String
   token: String!
+  createdAt: DateTime!
 }
 
 """A connection to a list of items."""
@@ -363,7 +378,9 @@ type VerificationTokenConnection {
 }
 
 input VerificationTokenCreateInput {
+  userId: String
   token: String!
+  createdAt: DateTime!
 }
 
 """An edge in a connection."""
@@ -378,13 +395,19 @@ type VerificationTokenEdge {
 enum VerificationTokenOrderByInput {
   id_ASC
   id_DESC
+  userId_ASC
+  userId_DESC
   token_ASC
   token_DESC
+  createdAt_ASC
+  createdAt_DESC
 }
 
 type VerificationTokenPreviousValues {
   id: ID!
+  userId: String
   token: String!
+  createdAt: DateTime!
 }
 
 type VerificationTokenSubscriptionPayload {
@@ -421,11 +444,15 @@ input VerificationTokenSubscriptionWhereInput {
 }
 
 input VerificationTokenUpdateInput {
+  userId: String
   token: String
+  createdAt: DateTime
 }
 
 input VerificationTokenUpdateManyMutationInput {
+  userId: String
   token: String
+  createdAt: DateTime
 }
 
 input VerificationTokenWhereInput {
@@ -471,6 +498,46 @@ input VerificationTokenWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
+  userId: String
+
+  """All values that are not equal to given value."""
+  userId_not: String
+
+  """All values that are contained in given list."""
+  userId_in: [String!]
+
+  """All values that are not contained in given list."""
+  userId_not_in: [String!]
+
+  """All values less than the given value."""
+  userId_lt: String
+
+  """All values less than or equal the given value."""
+  userId_lte: String
+
+  """All values greater than the given value."""
+  userId_gt: String
+
+  """All values greater than or equal the given value."""
+  userId_gte: String
+
+  """All values containing the given string."""
+  userId_contains: String
+
+  """All values not containing the given string."""
+  userId_not_contains: String
+
+  """All values starting with the given string."""
+  userId_starts_with: String
+
+  """All values not starting with the given string."""
+  userId_not_starts_with: String
+
+  """All values ending with the given string."""
+  userId_ends_with: String
+
+  """All values not ending with the given string."""
+  userId_not_ends_with: String
   token: String
 
   """All values that are not equal to given value."""
@@ -511,6 +578,28 @@ input VerificationTokenWhereInput {
 
   """All values not ending with the given string."""
   token_not_ends_with: String
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
 }
 
 input VerificationTokenWhereUniqueInput {

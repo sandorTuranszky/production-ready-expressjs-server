@@ -8,17 +8,13 @@ type Mutation {
     login(data: LoginUserInput!): AuthPayload!
     updateUser(id: ID!, data: UpdateUserInput!): User!
     deleteUser(id: ID!): User!
-    createVerificationToken: VerificationToken!
-    verifyEmail(token: String!): EmailVerificationPayload!
+    createVerificationToken(userId: String!): VerificationToken!
+    verifyEmail(token: String!): User!
 }
 
 type AuthPayload {
     token: String!
     user: User!
-}
-
-type EmailVerificationPayload {
-  valid: Boolean!
 }
 
 input CreateUserInput {
@@ -40,12 +36,15 @@ input UpdateUserInput {
 type User {
     id: ID!
     name: String!
-    email: String
+    email: String,
+    emailVerified: Boolean!
 }
 
 type VerificationToken {
     id: ID!
+    userId: String
     token: String!
+    createdAt: String!
 }
 
 type Subscription {

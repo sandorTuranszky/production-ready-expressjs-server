@@ -68,9 +68,11 @@ const Mutation = {
       info,
     );
   },
-  async createVerificationToken(parent, args, { prisma }, info) { //eslint-disable-line
+  async createVerificationToken(parent, { userId }, { prisma }, info) { //eslint-disable-line
     const token = await crypto.randomBytes(16).toString('hex');
-    return prisma.mutation.createVerificationToken({ data: { token } });
+    return prisma.mutation.createVerificationToken({
+      data: { userId, token, createdAt: new Date() },
+    });
   },
   async verifyEmail(parent, { token }, { prisma }, info) { //eslint-disable-line
     const response = await prisma.query.verificationToken({
@@ -79,9 +81,17 @@ const Mutation = {
       },
     });
 
-    return {
-      valid: !!response,
-    };
+    if (!response) throw new Error('Token is invalid');
+
+    return prisma.mutation.updateUser(
+      {
+        where: {
+          id: response.userId,
+        },
+        data: { emailVerified: true },
+      },
+      info,
+    );
   },
 };
 

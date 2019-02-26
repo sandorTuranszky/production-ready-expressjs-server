@@ -3,9 +3,12 @@ type User {
   name: String!
   email: String! @unique
   password: String!
+  emailVerified: Boolean! @default(value: false)
 }
 
 type VerificationToken {
   id: ID! @id
+  userId: String
   token: String! @unique
+  createdAt: DateTime!
 }
