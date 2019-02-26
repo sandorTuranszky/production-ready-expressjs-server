@@ -8,11 +8,17 @@ type Mutation {
     login(data: LoginUserInput!): AuthPayload!
     updateUser(id: ID!, data: UpdateUserInput!): User!
     deleteUser(id: ID!): User!
+    createVerificationToken: VerificationToken!
+    verifyEmail(token: String!): EmailVerificationPayload!
 }
 
 type AuthPayload {
     token: String!
     user: User!
+}
+
+type EmailVerificationPayload {
+  valid: Boolean!
 }
 
 input CreateUserInput {
@@ -35,6 +41,11 @@ type User {
     id: ID!
     name: String!
     email: String
+}
+
+type VerificationToken {
+    id: ID!
+    token: String!
 }
 
 type Subscription {

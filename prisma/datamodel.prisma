@@ -4,3 +4,8 @@ type User {
   email: String! @unique
   password: String!
 }
+
+type VerificationToken {
+  id: ID! @id
+  token: String! @unique
+}

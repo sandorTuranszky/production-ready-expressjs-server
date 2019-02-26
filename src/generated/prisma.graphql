@@ -1,7 +1,11 @@
 # source: http://localhost:4466
-# timestamp: Mon Feb 04 2019 14:56:37 GMT+0100 (CET)
+# timestamp: Tue Feb 26 2019 15:34:48 GMT+0100 (CET)
 
 type AggregateUser {
+  count: Int!
+}
+
+type AggregateVerificationToken {
   count: Int!
 }
 
@@ -18,11 +22,17 @@ scalar Long
 
 type Mutation {
   createUser(data: UserCreateInput!): User!
+  createVerificationToken(data: VerificationTokenCreateInput!): VerificationToken!
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
+  updateVerificationToken(data: VerificationTokenUpdateInput!, where: VerificationTokenWhereUniqueInput!): VerificationToken
   deleteUser(where: UserWhereUniqueInput!): User
+  deleteVerificationToken(where: VerificationTokenWhereUniqueInput!): VerificationToken
   upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
+  upsertVerificationToken(where: VerificationTokenWhereUniqueInput!, create: VerificationTokenCreateInput!, update: VerificationTokenUpdateInput!): VerificationToken!
   updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
+  updateManyVerificationTokens(data: VerificationTokenUpdateManyMutationInput!, where: VerificationTokenWhereInput): BatchPayload!
   deleteManyUsers(where: UserWhereInput): BatchPayload!
+  deleteManyVerificationTokens(where: VerificationTokenWhereInput): BatchPayload!
 }
 
 enum MutationType {
@@ -54,8 +64,11 @@ type PageInfo {
 
 type Query {
   users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
+  verificationTokens(where: VerificationTokenWhereInput, orderBy: VerificationTokenOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [VerificationToken]!
   user(where: UserWhereUniqueInput!): User
+  verificationToken(where: VerificationTokenWhereUniqueInput!): VerificationToken
   usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
+  verificationTokensConnection(where: VerificationTokenWhereInput, orderBy: VerificationTokenOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): VerificationTokenConnection!
 
   """Fetches an object given its ID"""
   node(
@@ -66,6 +79,7 @@ type Query {
 
 type Subscription {
   user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
+  verificationToken(where: VerificationTokenSubscriptionWhereInput): VerificationTokenSubscriptionPayload
 }
 
 type User implements Node {
@@ -331,4 +345,175 @@ input UserWhereInput {
 input UserWhereUniqueInput {
   id: ID
   email: String
+}
+
+type VerificationToken implements Node {
+  id: ID!
+  token: String!
+}
+
+"""A connection to a list of items."""
+type VerificationTokenConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [VerificationTokenEdge]!
+  aggregate: AggregateVerificationToken!
+}
+
+input VerificationTokenCreateInput {
+  token: String!
+}
+
+"""An edge in a connection."""
+type VerificationTokenEdge {
+  """The item at the end of the edge."""
+  node: VerificationToken!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum VerificationTokenOrderByInput {
+  id_ASC
+  id_DESC
+  token_ASC
+  token_DESC
+}
+
+type VerificationTokenPreviousValues {
+  id: ID!
+  token: String!
+}
+
+type VerificationTokenSubscriptionPayload {
+  mutation: MutationType!
+  node: VerificationToken
+  updatedFields: [String!]
+  previousValues: VerificationTokenPreviousValues
+}
+
+input VerificationTokenSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [VerificationTokenSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: VerificationTokenWhereInput
+}
+
+input VerificationTokenUpdateInput {
+  token: String
+}
+
+input VerificationTokenUpdateManyMutationInput {
+  token: String
+}
+
+input VerificationTokenWhereInput {
+  """Logical AND on all given filters."""
+  AND: [VerificationTokenWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  token: String
+
+  """All values that are not equal to given value."""
+  token_not: String
+
+  """All values that are contained in given list."""
+  token_in: [String!]
+
+  """All values that are not contained in given list."""
+  token_not_in: [String!]
+
+  """All values less than the given value."""
+  token_lt: String
+
+  """All values less than or equal the given value."""
+  token_lte: String
+
+  """All values greater than the given value."""
+  token_gt: String
+
+  """All values greater than or equal the given value."""
+  token_gte: String
+
+  """All values containing the given string."""
+  token_contains: String
+
+  """All values not containing the given string."""
+  token_not_contains: String
+
+  """All values starting with the given string."""
+  token_starts_with: String
+
+  """All values not starting with the given string."""
+  token_not_starts_with: String
+
+  """All values ending with the given string."""
+  token_ends_with: String
+
+  """All values not ending with the given string."""
+  token_not_ends_with: String
+}
+
+input VerificationTokenWhereUniqueInput {
+  id: ID
+  token: String
 }

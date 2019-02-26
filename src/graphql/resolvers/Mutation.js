@@ -1,5 +1,6 @@
 'use strict';
 
+const crypto = require('crypto');
 const bcrypt = require('bcryptjs');
 const config = require('config');
 const jwt = require('jsonwebtoken');
@@ -56,7 +57,7 @@ const Mutation = {
     );
   },
   updateUser(parent, args, { prisma, req }, info) {
-    const userId = getUserId({ req });//eslint-disable-line
+    const userId = getUserId({ req }); //eslint-disable-line
     return prisma.mutation.updateUser(
       {
         where: {
@@ -66,6 +67,21 @@ const Mutation = {
       },
       info,
     );
+  },
+  async createVerificationToken(parent, args, { prisma }, info) { //eslint-disable-line
+    const token = await crypto.randomBytes(16).toString('hex');
+    return prisma.mutation.createVerificationToken({ data: { token } });
+  },
+  async verifyEmail(parent, { token }, { prisma }, info) { //eslint-disable-line
+    const response = await prisma.query.verificationToken({
+      where: {
+        token,
+      },
+    });
+
+    return {
+      valid: !!response,
+    };
   },
 };
 
