@@ -4,8 +4,8 @@ const crypto = require('crypto');
 const bcrypt = require('bcryptjs');
 const config = require('config');
 const jwt = require('jsonwebtoken');
-const asyncMiddlewareGraphQl = require('../../utils/asyncMiddlewareGraphQl');
 const { getUserId } = require('../utils');
+const asyncMiddlewareGraphQl = require('../../utils/asyncMiddlewareGraphQl');
 
 const errorMsg = 'Wrong email or password';
 
@@ -99,13 +99,43 @@ async function verifyEmail(parent, { token }, { prisma }, info) { //eslint-disab
   );
 }
 
+function verifyToken(parent, { token }, { prisma }, info) { //eslint-disable-line
+  return prisma.query.verificationToken({
+    where: {
+      token,
+    },
+  });
+}
+
+async function updateUserPassword(parent, { data }, { prisma, req }, info) {
+  const userId = getUserId({ req });
+  const { password, passwordRepeat } = data;
+
+  // eslint-disable-next-line security/detect-possible-timing-attacks
+  if (password !== passwordRepeat) throw new Error('Passwords do not match');
+
+  return prisma.mutation.updateUser(
+    {
+      where: {
+        id: userId,
+      },
+      data: {
+        password: await bcrypt.hash(password, 10),
+      },
+    },
+    info,
+  );
+}
+
 const Mutation = {
   createUser: asyncMiddlewareGraphQl(createUser),
   login: asyncMiddlewareGraphQl(login),
   deleteUser: asyncMiddlewareGraphQl(deleteUser),
   createVerificationToken: asyncMiddlewareGraphQl(createVerificationToken),
   verifyEmail: asyncMiddlewareGraphQl(verifyEmail),
+  updateUserPassword: asyncMiddlewareGraphQl(updateUserPassword),
   updateUser,
+  verifyToken,
 };
 
 module.exports = Mutation;
