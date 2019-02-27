@@ -15,8 +15,8 @@ const server = new ApolloServer({
     onConnect: () => winston.info('Connected to websocket'),
     onDisconnect: webSocket => winston.info(`Disconnected from websocket ${webSocket}`),
   },
-  context: req => ({
-    ...req,
+  context: ({ req }) => ({ //eslint-disable-line
+    req,
     pubSub,
     prisma,
   }),

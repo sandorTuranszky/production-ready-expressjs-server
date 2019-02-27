@@ -6,19 +6,6 @@ const config = require('config');
 const winston = require('../utils/logger/winston');
 
 let client = null;
-// Const connectRedis = require('connect-redis');
-
-// Todo: check if session will be stored in redis
-// Module.exports = (Session) => {
-//   Const client = createClient({
-//     Host: config.get('database.session.host'),
-//     Port: config.get('database.session.port'),
-//     Prefix: config.get('database.session.prefix'),
-//     DisableTTL: true,
-//   });
-//   Const RedisStore = connectRedis(Session);
-//   Return new RedisStore({ client: client });
-// };
 
 const redisURL = url.parse(config.get('db.redis.url'));
 
