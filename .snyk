@@ -1,0 +1,51 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.13.5
+# ignores vulnerabilities until expiry date; change duration by modifying expiry date
+ignore:
+  SNYK-JS-FSTREAM-174725:
+    - npm > node-gyp > fstream:
+        reason: None given
+        expires: '2019-07-06T07:57:20.996Z'
+    - npm > node-gyp > tar > fstream:
+        reason: None given
+        expires: '2019-07-06T07:57:20.996Z'
+    - npm > npm-lifecycle > node-gyp > fstream:
+        reason: None given
+        expires: '2019-07-06T07:57:20.996Z'
+    - npm > npm-lifecycle > node-gyp > tar > fstream:
+        reason: None given
+        expires: '2019-07-06T07:57:20.996Z'
+    - npm > libcipm > npm-lifecycle > node-gyp > fstream:
+        reason: None given
+        expires: '2019-07-06T07:57:20.996Z'
+    - npm > libnpm > npm-lifecycle > node-gyp > fstream:
+        reason: None given
+        expires: '2019-07-06T07:57:20.996Z'
+    - npm > libcipm > npm-lifecycle > node-gyp > tar > fstream:
+        reason: None given
+        expires: '2019-07-06T07:57:20.996Z'
+    - npm > libnpm > npm-lifecycle > node-gyp > tar > fstream:
+        reason: None given
+        expires: '2019-07-06T07:57:20.996Z'
+  SNYK-JS-TAR-174125:
+    - npm > node-gyp > tar:
+        reason: None given
+        expires: '2019-07-06T07:57:20.996Z'
+    - npm > npm-lifecycle > node-gyp > tar:
+        reason: None given
+        expires: '2019-07-06T07:57:20.996Z'
+    - npm > libcipm > npm-lifecycle > node-gyp > tar:
+        reason: None given
+        expires: '2019-07-06T07:57:20.996Z'
+    - npm > libnpm > npm-lifecycle > node-gyp > tar:
+        reason: None given
+        expires: '2019-07-06T07:57:20.996Z'
+  'npm:extend:20180424':
+    - kue > node-redis-warlock > node-redis-scripty > extend:
+        reason: None given
+        expires: '2019-07-06T07:57:20.996Z'
+  'npm:mem:20180117':
+    - npm > libnpx > yargs > os-locale > mem:
+        reason: None given
+        expires: '2019-07-06T07:57:20.996Z'
+patch: {}

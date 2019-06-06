@@ -25,7 +25,8 @@
     "kue": "node ./src/utils/jobQueue/queues/kue/dashboard.js",
     "get-schema": "graphql get-schema -p production-ready-expressjs-server --env-file .env",
     "get-prisma-token": "cd ./prisma && prisma token --env-file ../.env",
-    "clear-db": "cd ./prisma && prisma delete --env-file ../.env"
+    "clear-db": "cd ./prisma && prisma delete --env-file ../.env",
+    "test": "snyk test"
   },
   "husky": {
     "hooks": {
@@ -90,6 +91,7 @@
     "lint-staged": "^8.0.4",
     "nodemon": "1.18.3",
     "prettier": "^1.15.1",
+    "snyk": "^1.173.1",
     "supertest": "^3.3.0"
   },
   "jest": {
