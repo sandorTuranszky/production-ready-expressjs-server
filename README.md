@@ -5,7 +5,11 @@
 
 This is an [Express.js](https://github.com/Automattic/kue) based Nodejs server that implements production-ready error handling and logging following latest best practices.
 
-This is a backend server for my project that is COMING SOON. It inspired by an idea to quickly create a production ready project with all the required infrastructure at low cost yet with important security measures in place and ability to quickly scale in order to ship a quality product to early adopters. Ideal for quickly starting an app to validate ideas and scale if needed.
+This project is inspired by an idea to quickly create a production ready project with all the required infrastructure at low cost yet with important security measures in place and ability to quickly scale in order to ship a quality product to early adopters. Ideal for quickly starting an app to validate ideas and scale if needed.
+
+One of the main points is that we do not need to deal with setting up servers or databases to validate an idea. Therefore, this opensource project relies on cloud solutions for managing DBs, deployments, sending transactional emails, which have free plans with useful and secure features. And you can always switch to a paid plan if your projects grow fast and you need more power.
+
+Current stack is JavaScript/Nodejs, MongoDB, Redis, Graphql. [Now](https://zeit.co/now) for deployment. 
 
 ## Features
 
@@ -48,13 +52,17 @@ This project uses [Git hook](https://github.com/m1foley/fit-commit) to validate 
 
 I am always open to <a href="https://github.com/sandorTuranszky/production-ready-ExpressJs-server/issues" target="_blank">your feedback</a>
 
-## ToDo:
+## ToDo (with React, Vue and Angular):
 
 - Authentication (Gmail, Facebook, LinkedIn, Twitter)
 - Password recovery
 - add/remove social accounts
+- Backend (RBAC, user management)
+- Logic to separate free/paid services
+- Basic CSS with something simple like [tailwindcss](https://tailwindcss.com/)
 - GDPR ready (cookies, settings)
 - [TypeScript](https://www.typescriptlang.org/) (maybe)
+- Scaffolding tool to choose from the mentioned FWs/Libs, etc.
 
 ## Get started
 
