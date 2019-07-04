@@ -48,4 +48,28 @@ ignore:
     - npm > libnpx > yargs > os-locale > mem:
         reason: None given
         expires: '2019-07-06T07:57:20.996Z'
-patch: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  SNYK-JS-LODASH-450202:
+    - mongoose > async > lodash:
+        patched: '2019-07-04T02:43:39.186Z'
+    - graphql-import > lodash:
+        patched: '2019-07-04T02:43:39.186Z'
+    - winston > async > lodash:
+        patched: '2019-07-04T02:43:39.186Z'
+    - prisma-binding > graphql-import > lodash:
+        patched: '2019-07-04T02:43:39.186Z'
+    - apollo-server-express > apollo-server-core > lodash:
+        patched: '2019-07-04T02:43:39.186Z'
+    - kue > lodash:
+        patched: '2019-07-04T02:43:39.186Z'
+    - apollo-server-express > apollo-server-core > apollo-engine-reporting > lodash:
+        patched: '2019-07-04T02:43:39.186Z'
+    - prisma-binding > graphql-binding > graphql-import > lodash:
+        patched: '2019-07-04T02:43:39.186Z'
+    - kue > pug > pug-filters > constantinople > babel-types > lodash:
+        patched: '2019-07-04T02:43:39.186Z'
+    - kue > pug > pug-code-gen > constantinople > babel-types > lodash:
+        patched: '2019-07-04T02:43:39.186Z'
+    - kue > pug > pug-code-gen > pug-attrs > constantinople > babel-types > lodash:
+        patched: '2019-07-04T02:43:39.186Z'

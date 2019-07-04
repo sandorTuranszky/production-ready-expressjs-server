@@ -26,7 +26,9 @@
     "get-schema": "graphql get-schema -p production-ready-expressjs-server --env-file .env",
     "get-prisma-token": "cd ./prisma && prisma token --env-file ../.env",
     "clear-db": "cd ./prisma && prisma delete --env-file ../.env",
-    "test": "snyk test"
+    "test": "snyk test",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "husky": {
     "hooks": {
@@ -72,7 +74,8 @@
     "prisma-binding": "^2.2.14",
     "redis": "^2.8.0",
     "url": "0.11.0",
-    "winston": "^3.1.0"
+    "winston": "^3.1.0",
+    "snyk": "^1.189.0"
   },
   "devDependencies": {
     "eslint": "^5.6.1",
@@ -91,7 +94,6 @@
     "lint-staged": "^8.0.4",
     "nodemon": "1.18.3",
     "prettier": "^1.15.1",
-    "snyk": "^1.173.1",
     "supertest": "^3.3.0"
   },
   "jest": {
@@ -105,5 +107,6 @@
       "src/db/mongodb.js",
       "src/db/redis.js"
     ]
-  }
+  },
+  "snyk": true
 }
