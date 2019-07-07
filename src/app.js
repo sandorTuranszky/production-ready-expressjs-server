@@ -40,9 +40,9 @@ app.use(Sentry.Handlers.requestHandler());
  * createRedisClient();
  *
  * MongoDb:
- * const { mongodb } = require('../src/db');
- * mongodb()
  */
+const { mongodb } = require('../src/db');
+mongodb();
 
 /**
  * Require modules conditionally

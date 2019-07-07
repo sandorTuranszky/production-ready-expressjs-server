@@ -4,10 +4,7 @@ const mongoose = require('mongoose');
 const config = require('config');
 const winston = require('../utils/logger/winston');
 
-const dbUser = config.get('db.mongoose.user');
-const dbPassword = config.get('db.mongoose.password');
-const dbName = config.get('db.mongoose.dbName');
-const dbURI = `mongodb+srv://${dbUser}:${dbPassword}@shopping-list-cluster-clxgl.mongodb.net/${dbName}?retryWrites=true`;
+const dbURI = config.get('db.mongoose.url');
 
 mongoose.Promise = global.Promise;
 
