@@ -42,6 +42,7 @@ app.use(Sentry.Handlers.requestHandler());
  * MongoDb:
  */
 const { mongodb } = require('../src/db');
+
 mongodb();
 
 /**

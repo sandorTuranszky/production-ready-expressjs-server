@@ -68,6 +68,7 @@ I am always open to <a href="https://github.com/sandorTuranszky/production-ready
 
 - [Set up environment variables](#set-up-environment-variables)
 - [Install and start Docker](#Install-and-start-docker)
+- [Install npm dependencies](#Install-npm-dependencies)
 - [Create account and connect to MongoDB Atlas cloud instance using the FREE plan](#Create-account-and-connect-to-MongoDB-Atlas-cloud-instance-using-the-FREE-plan)
 - [Set up Prisma](#set-up-Prisma)
 - [Create account and connect to RedisLabs cloud instance using the FREE plan](#Create-account-and-connect-to-RedisLabs-cloud-instance-using-the-FREE-plan)
@@ -94,6 +95,16 @@ Rename `*.sample.js` files in `/server/config` directory:
 - `production.sample.js -> production.js`
 - `test.sample.js -> test.js`
 
+Create `.env` file in the root of the project with the following lines:
+
+```
+//.env
+
+PRISMA_URL=mongodb+srv://<user>:<password>@cluster0-clxgl.mongodb.net/test?retryWrites=true&w=majority
+PRISMA_URL=http://localhost:4466
+
+```
+
 More details on how config works see [node-config](https://github.com/lorenwest/node-config).
 You may also find [Securing production config files](https://github.com/lorenwest/node-config/wiki/Securing-Production-Config-Files) useful
 
@@ -102,23 +113,21 @@ You may also find [Securing production config files](https://github.com/lorenwes
 - Install [Docker](https://www.docker.com/get-started) (if not yet installed) and make sure it runs
 - Run `docker-compose up`
 
+## Install npm dependencies
+
+- Run `npm install`
+
 ## Create account and connect to MongoDB Atlas cloud instance using the FREE plan
 
 - Create an account with [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/pricing) using the FREE plan and follow instructions [here](https://docs.atlas.mongodb.com/getting-started/)
 
 ## Set up Prisma
 
-- Prisma serves as an ORM and to make it work you need to provide MongoDB connection string (you should have it from the previous step by now) in the `.env` file in the project root.
+1. Prisma serves as an ORM. Run `npm i -g prisma` to install it
+2. Schema is defined here `./prisma/datamodel.prisma`
+3. Run `prisma deploy` or `(npm run deploy)`
 
-```
-//.env
-
-MONGO_DB=mongodb+srv://<user>:<password>@cluster0-clxgl.mongodb.net/test?retryWrites=true&w=majority
-
-```
-
-- Schema is defined here `./prisma/datamodel.prisma`
-- Use `npm run get-schema` to download schema from endpoint to `./src/generated/prisma.graphql`. Note that it will run automatically on `prisma deploy` or `(npm run deploy)` as it is set up in `post-deploy` hook in `/prisma/prisma.yml`
+- Later, during development, use `npm run get-schema` to download schema from endpoint to `./src/generated/prisma.graphql`. Note that it will run automatically on `prisma deploy` or `(npm run deploy)` as it is set up in `post-deploy` hook in `/prisma/prisma.yml`
 - Prisma GraphQl playground is available here `http://localhost:4466`
 - Apollo server GraphQl playground - `http://localhost:3030/graphql`
 
