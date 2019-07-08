@@ -73,3 +73,47 @@ patch:
         patched: '2019-07-04T02:43:39.186Z'
     - kue > pug > pug-code-gen > pug-attrs > constantinople > babel-types > lodash:
         patched: '2019-07-04T02:43:39.186Z'
+    - snyk > snyk-config > lodash:
+        patched: '2019-07-08T15:37:38.255Z'
+    - snyk > lodash:
+        patched: '2019-07-08T15:37:38.255Z'
+    - graphql-import > lodash:
+        patched: '2019-07-08T15:37:38.255Z'
+    - snyk > snyk-nuget-plugin > lodash:
+        patched: '2019-07-08T15:37:38.255Z'
+    - snyk > snyk-nodejs-lockfile-parser > lodash:
+        patched: '2019-07-08T15:37:38.255Z'
+    - snyk > snyk-mvn-plugin > lodash:
+        patched: '2019-07-08T15:37:38.255Z'
+    - prisma-binding > graphql-import > lodash:
+        patched: '2019-07-08T15:37:38.255Z'
+    - winston > async > lodash:
+        patched: '2019-07-08T15:37:38.255Z'
+    - apollo-server-express > apollo-server-core > lodash:
+        patched: '2019-07-08T15:37:38.255Z'
+    - snyk > @snyk/dep-graph > lodash:
+        patched: '2019-07-08T15:37:38.255Z'
+    - snyk > inquirer > lodash:
+        patched: '2019-07-08T15:37:38.255Z'
+    - kue > lodash:
+        patched: '2019-07-08T15:37:38.255Z'
+    - mongoose > async > lodash:
+        patched: '2019-07-08T15:37:38.255Z'
+    - snyk > snyk-nodejs-lockfile-parser > graphlib > lodash:
+        patched: '2019-07-08T15:37:38.255Z'
+    - prisma-binding > graphql-binding > graphql-import > lodash:
+        patched: '2019-07-08T15:37:38.255Z'
+    - apollo-server-express > apollo-server-core > apollo-engine-reporting > lodash:
+        patched: '2019-07-08T15:37:38.255Z'
+    - snyk > snyk-php-plugin > @snyk/composer-lockfile-parser > lodash:
+        patched: '2019-07-08T15:37:38.255Z'
+    - snyk > snyk-go-plugin > graphlib > lodash:
+        patched: '2019-07-08T15:37:38.255Z'
+    - snyk > @snyk/dep-graph > graphlib > lodash:
+        patched: '2019-07-08T15:37:38.255Z'
+    - kue > pug > pug-filters > constantinople > babel-types > lodash:
+        patched: '2019-07-08T15:37:38.255Z'
+    - kue > pug > pug-code-gen > constantinople > babel-types > lodash:
+        patched: '2019-07-08T15:37:38.255Z'
+    - kue > pug > pug-code-gen > pug-attrs > constantinople > babel-types > lodash:
+        patched: '2019-07-08T15:37:38.255Z'
