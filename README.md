@@ -9,7 +9,7 @@ This project is inspired by an idea to quickly create a production ready project
 
 One of the main points is that we do not need to deal with setting up servers or databases to validate an idea. Therefore, this opensource project relies on cloud solutions for managing DBs, deployments, sending transactional emails, which have free plans with useful and secure features. And you can always switch to a paid plan if your projects grow fast and you need more power.
 
-Current stack is JavaScript/Nodejs, MongoDB, Redis, Graphql. [Now](https://zeit.co/now) for deployment. 
+Current stack is JavaScript/Nodejs, MongoDB, Redis, Graphql. [Now](https://zeit.co/now) for deployment.
 
 ## Features
 
@@ -38,7 +38,7 @@ Current stack is JavaScript/Nodejs, MongoDB, Redis, Graphql. [Now](https://zeit.
   - [Shut the process gracefully when a stranger comes to town](https://github.com/i0natan/nodebestpractices#-26-shut-the-process-gracefully-when-a-stranger-comes-to-town)
   - [Use a mature logger to increase error visibility](https://github.com/i0natan/nodebestpractices#-27-use-a-mature-logger-to-increase-error-visibility)
   - [Use ESLint](https://github.com/i0natan/nodebestpractices#-31-use-eslint)
-  - [Detect code issues with a linter](https://github.com/i0natan/nodebestpractices#-42-detect-code-issues-with-a-linter)    
+  - [Detect code issues with a linter](https://github.com/i0natan/nodebestpractices#-42-detect-code-issues-with-a-linter)
   - [Embrace linter security rules](https://github.com/i0natan/nodebestpractices#-61-embrace-linter-security-rules)
   - [Node.js Specific Plugins](https://github.com/i0natan/nodebestpractices#-32-nodejs-specific-plugins)
   - [Start a Codeblock's Curly Braces on the Same Line](https://github.com/i0natan/nodebestpractices#-33-start-a-codeblocks-curly-braces-on-the-same-line)
@@ -68,7 +68,6 @@ I am always open to <a href="https://github.com/sandorTuranszky/production-ready
 
 - [Set up environment variables](#set-up-environment-variables)
 - [Install and start Docker](#Install-and-start-docker)
-- [Install dependencies](#Install-dependencies)
 - [Create account and connect to MongoDB Atlas cloud instance using the FREE plan](#Create-account-and-connect-to-MongoDB-Atlas-cloud-instance-using-the-FREE-plan)
 - [Set up Prisma](#set-up-Prisma)
 - [Create account and connect to RedisLabs cloud instance using the FREE plan](#Create-account-and-connect-to-RedisLabs-cloud-instance-using-the-FREE-plan)
@@ -80,9 +79,11 @@ I am always open to <a href="https://github.com/sandorTuranszky/production-ready
 - [Test error handling](#test-error-handling)
 
 ## Security in production
+
 - Closing prisma to the outside world(#closing-prisma-to-the-outside-world)
 
 ## Additional settings
+
 - [Pushing images to docker hub (optional)](#pushing-images-to-docker-hub)
 
 ## Set up environment variables
@@ -101,25 +102,38 @@ You may also find [Securing production config files](https://github.com/lorenwes
 - Install [Docker](https://www.docker.com/get-started) (if not yet installed) and make sure it runs
 - Run `docker-compose up`
 
-## Install dependencies
-
-- `npm install`
-
 ## Create account and connect to MongoDB Atlas cloud instance using the FREE plan
 
 - Create an account with [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/pricing) using the FREE plan and follow instructions [here](https://docs.atlas.mongodb.com/getting-started/)
 
 ## Set up Prisma
+
 - Prisma serves as an ORM and to make it work you need to provide MongoDB connection string (you should have it from the previous step by now) in the `.env` file in the project root.
+
+```
+//.env
+
+MONGO_DB=mongodb+srv://<user>:<password>@cluster0-clxgl.mongodb.net/test?retryWrites=true&w=majority
+
+```
+
 - Schema is defined here `./prisma/datamodel.prisma`
 - Use `npm run get-schema` to download schema from endpoint to `./src/generated/prisma.graphql`. Note that it will run automatically on `prisma deploy` or `(npm run deploy)` as it is set up in `post-deploy` hook in `/prisma/prisma.yml`
 - Prisma GraphQl playground is available here `http://localhost:4466`
 - Apollo server GraphQl playground - `http://localhost:3030/graphql`
 
 ## Create account and connect to RedisLabs cloud instance using the FREE plan
+
 - Create an account with [Redislabs](https://redislabs.com/get-started/) using the FREE plan (choose Cloud Hosted - free up to 30MB) and follow instructions [here](https://docs.redislabs.com/latest/rc/quick-setup-redis-cloud/)
 
+!!!Note!!! the redis url looks as follows (the part after `@` is the Endpoint from the dashboard configuration tab):
+
+```
+redis://:<password>@redis-<...>.cloud.redislabs.com:<port>
+```
+
 ## Create account and setup Sentry error tracking
+
 - Create a Sentry account [here](https://sentry.io/welcome/)
 - Add `your-sentry-dsn` to all configuration files in `/config` dir
 
@@ -130,6 +144,7 @@ You may also find [Securing production config files](https://github.com/lorenwes
 ```
 
 ## Create account and setup MailJet to send transactional emails
+
 - Create a MailJet account [here](https://www.mailjet.com/)
 - Add `your-mailjet-api-key` and `your-mailjet-secret` to all configuration files in `/config` dir
 
@@ -139,9 +154,11 @@ You may also find [Securing production config files](https://github.com/lorenwes
     secret: 'your-mailjet-secret',
   },
 ```
+
 - Important!!! You need to use a domain-based email address as an email sender (e.g. your project's domain name) to ensure emails are delivered to the inbox. Otherwise, they will end up in spam (including example@gmail.com once). In your MailJet account you can verify your email and take additional measures (e.g.SPF and DKIM settings) to ensure your emails are delivered.
 
 ## Kue UI dashboard
+
 - The dashboard is available under `http://localhost:3050/active` or via nginx `http://localhost:3030/kue/active`
 
 ## Run server
@@ -175,6 +192,7 @@ You may also find [Securing production config files](https://github.com/lorenwes
 - [Error handling Wiki](https://github.com/sandorTuranszky/production-ready-ExpressJs-server/wiki/Error-handling)
 
 ## Closing prisma to the outside world
+
 - Add your secret in `prisma/prisma.yml`
 
 ```
@@ -191,9 +209,10 @@ secret: 'putYourSuperSecretTextHere',
 
 - run `npm run deploy`
 
-Now the `http://localhost:3030/graphql` endpoint will work as expected. 
+Now the `http://localhost:3030/graphql` endpoint will work as expected.
 
 However the `http://localhost:4466` will return `"Your token is invalid"` error. To be able to use it, you need to generate an authorization token and use it in HTTP headers. Here is how you do it:
+
 - run `npm run get-prisma-token`
 - copy the generated token
 - insert the following HTTP headers (bottom left corner) in graphql playground under `http://localhost:4466`
@@ -204,9 +223,9 @@ However the `http://localhost:4466` will return `"Your token is invalid"` error.
 }
 ```
 
-
 ## Pushing images to docker hub
-  To push images to [Docker Hub](https://hub.docker.com/) you need to provide your Docker user name and password as environment variables.
-  Refer to [Travis documentation](https://docs.travis-ci.com/user/environment-variables/#defining-variables-in-repository-settings) for more details
-  
-  Once environment variables set, uncomment related lines in `.travis.yml` file
+
+To push images to [Docker Hub](https://hub.docker.com/) you need to provide your Docker user name and password as environment variables.
+Refer to [Travis documentation](https://docs.travis-ci.com/user/environment-variables/#defining-variables-in-repository-settings) for more details
+
+Once environment variables set, uncomment related lines in `.travis.yml` file
