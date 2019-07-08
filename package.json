@@ -106,7 +106,8 @@
       "src/db/index.js",
       "src/db/mongodb.js",
       "src/db/redis.js"
-    ]
+    ],
+    "testEnvironment": "node"
   },
   "snyk": true
 }
