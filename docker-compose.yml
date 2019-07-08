@@ -13,7 +13,7 @@ services:
     image: prismagraphql/prisma:1.25
     restart: always
     ports:
-    - "4466:4466"  
+      - '4466:4466'
     environment:
       PRISMA_CONFIG: |
         port: 4466
@@ -23,15 +23,15 @@ services:
           default:
             connector: mongo
             uri: >-
-              ${MONGO_DB} 
+              ${MONGO_DB}
   kue:
-    build: 
+    build:
       context: .
       dockerfile: ./src/utils/jobQueue/queues/kue/Dockerfile.dev
     ports:
       - '3050:3050'
     volumes:
-      - /app/node_modules
+      - /usr/src/app/node_modules
       - .:/usr/src/app
   api:
     build:
