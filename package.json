@@ -69,13 +69,13 @@
     "mongoose": "^5.3.16",
     "morgan": "^1.9.1",
     "node-mailjet": "^3.3.1",
-    "npm": "^6.9.0",
+    "npm": "^6.10.0",
     "path": "^0.12.7",
     "prisma-binding": "^2.2.14",
     "redis": "^2.8.0",
+    "snyk": "^1.189.0",
     "url": "0.11.0",
-    "winston": "^3.1.0",
-    "snyk": "^1.189.0"
+    "winston": "^3.1.0"
   },
   "devDependencies": {
     "eslint": "^5.6.1",
