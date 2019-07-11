@@ -9,14 +9,14 @@ services:
   - docker
 
 env:
-  - NODE_ENV=test  
+  - NODE_ENV=test
 
 install:
   - npm install -g codecov
 
 before_install:
   - mv ./config/default.sample.js ./config/default.js
-  - cat ./config/test.sample.js | sed -e "s|your-sentry-dsn|"$SENTRY_DSN"|" -e "s|your-redis-url|"$REDIS_URL"|" > ./config/test.js # Set correct Sentry dns and Redis url
+  - cat ./config/test.sample.js | sed -e "s|your-sentry-dsn|"$SENTRY_DSN"|" -e "s|your-redis-url|"$REDIS_URL"|" -e "s|your-mongodb-url|"$MONGO_DB_URL"|" > ./config/test.js # Set correct Sentry dns and Redis and Mongo DB url
   - docker build -t server-express-test -f ./Dockerfile.dev .
 
 script:

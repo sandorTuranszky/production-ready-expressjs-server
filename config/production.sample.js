@@ -10,7 +10,7 @@ module.exports = {
   },
   db: {
     mongoose: {
-      url: 'your-mongodb-url', // Required
+      url: 'your-mongodb-url', // Required and the value must be strictly <your-mongodb-url> as it is replaced with correct Mongo DB url value in Travis CI
       auto_reconnect: true,
     },
     redis: {
