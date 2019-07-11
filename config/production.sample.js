@@ -14,7 +14,7 @@ module.exports = {
       auto_reconnect: true,
     },
     redis: {
-      url: 'your-redis-url', // Required
+      url: 'your-redis-url', // Required and the value must be strictly <your-redis-url> as it is replaced with correct Redis url value in Travis CI
       retryStrategy: 1000,
     },
   },
@@ -26,6 +26,6 @@ module.exports = {
     secret: 'your-mailjet-secret',
   },
   sentry: {
-    dsn: 'your-dns', // Required
+    dsn: 'your-sentry-dsn', // Required and the value must be strictly <your-sentry-dsn> as it is replaced with correct DSN value in Travis CI
   },
 };
