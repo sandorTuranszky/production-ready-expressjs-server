@@ -8,7 +8,16 @@ module.exports = {
       file: true,
     },
   },
-  db: {},
+  db: {
+    mongoose: {
+      url: 'your-mongodb-url', // Required and the value must be strictly <your-mongodb-url> as it is replaced with correct Mongo DB url value in Travis CI
+      auto_reconnect: true,
+    },
+    redis: {
+      url: 'your-redis-url', // Required and the value must be strictly <your-redis-url> as it is replaced with correct Redis url value in Travis CI
+      retryStrategy: 1000,
+    },
+  },
   apollo: {
     playgroundPath: '/graphql',
   },
