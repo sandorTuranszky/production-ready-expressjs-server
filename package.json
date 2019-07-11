@@ -15,7 +15,7 @@
     "deploy": "prisma deploy --env-file .env",
     "test:unit": "set NODE_ENV=test && jest tests/unit",
     "test:int": "set NODE_ENV=test && jest tests/int",
-    "coverage": "jest --collectCoverageFrom=src/**/**.js --coverage tests",
+    "coverage": "jest --collectCoverageFrom=src/**/**.js --coverage --detectOpenHandles --forceExit tests",
     "lint": "eslint .",
     "lint:write": "eslint --debug . --fix",
     "version:patch": "npm version patch",
