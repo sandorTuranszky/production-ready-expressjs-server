@@ -14,7 +14,7 @@
     "start": "node ./bin/www",
     "deploy": "prisma deploy --env-file .env",
     "test:unit": "set NODE_ENV=test && jest tests/unit",
-    "test:int": "set NODE_ENV=test && jest tests/int",
+    "test:int": "set NODE_ENV=test && jest --detectOpenHandles --forceExit tests/int",
     "coverage": "jest --collectCoverageFrom=src/**/**.js --coverage --detectOpenHandles --forceExit tests",
     "lint": "eslint .",
     "lint:write": "eslint --debug . --fix",
