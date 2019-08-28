@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile.dev
       context: ./nginx
     ports:
-      - '3030:80'
+      - '${NGINX_PORT}:80'
     depends_on:
       - api
   prisma:
