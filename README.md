@@ -81,7 +81,7 @@ I am always open to <a href="https://github.com/sandorTuranszky/production-ready
 
 ## Security in production
 
-- Closing prisma to the outside world(#closing-prisma-to-the-outside-world)
+- [Closing prisma to the outside world](#closing-prisma-to-the-outside-world)
 
 ## Additional settings
 
@@ -100,8 +100,9 @@ Create `.env` file in the root of the project with the following lines:
 ```
 //.env
 
-PRISMA_URL=mongodb+srv://<user>:<password>@cluster0-clxgl.mongodb.net/test?retryWrites=true&w=majority
+MONGO_DB=mongodb+srv://<user>:<password>@cluster0-clxgl.mongodb.net/test?retryWrites=true&w=majority
 PRISMA_URL=http://localhost:4466
+NGINX_PORT=3045 // or whatever you want
 
 ```
 
@@ -129,7 +130,7 @@ You may also find [Securing production config files](https://github.com/lorenwes
 
 - Later, during development, use `npm run get-schema` to download schema from endpoint to `./src/generated/prisma.graphql`. Note that it will run automatically on `prisma deploy` or `(npm run deploy)` as it is set up in `post-deploy` hook in `/prisma/prisma.yml`
 - Prisma GraphQl playground is available here `http://localhost:4466`
-- Apollo server GraphQl playground - `http://localhost:3030/graphql`
+- Apollo server GraphQl playground - `http://localhost:${NGINX_PORT}/graphql`
 
 ## Create account and connect to RedisLabs cloud instance using the FREE plan
 
@@ -168,7 +169,7 @@ redis://:<password>@redis-<...>.cloud.redislabs.com:<port>
 
 ## Kue UI dashboard
 
-- The dashboard is available under `http://localhost:3050/active` or via nginx `http://localhost:3030/kue/active`
+- The dashboard is available under `http://localhost:3050/active` or via nginx `http://localhost:${NGINX_PORT}/kue/active`
 
 ## Run server
 
@@ -218,7 +219,7 @@ secret: 'putYourSuperSecretTextHere',
 
 - run `npm run deploy`
 
-Now the `http://localhost:3030/graphql` endpoint will work as expected.
+Now the `http://localhost:${NGINX_PORT}/graphql` endpoint will work as expected.
 
 However the `http://localhost:4466` will return `"Your token is invalid"` error. To be able to use it, you need to generate an authorization token and use it in HTTP headers. Here is how you do it:
 
