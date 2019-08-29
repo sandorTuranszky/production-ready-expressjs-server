@@ -117,3 +117,5 @@ patch:
         patched: '2019-07-08T15:37:38.255Z'
     - kue > pug > pug-code-gen > pug-attrs > constantinople > babel-types > lodash:
         patched: '2019-07-08T15:37:38.255Z'
+    - snyk > snyk-nuget-plugin > dotnet-deps-parser > lodash:
+        patched: '2019-08-29T14:01:40.005Z'
