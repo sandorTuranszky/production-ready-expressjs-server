@@ -56,7 +56,7 @@
     "body-parser-graphql": "^1.1.0",
     "boom": "^7.2.0",
     "config": "^2.0.1",
-    "cookie-parser": "^1.4.3",
+    "cookie-parser": "^1.4.4",
     "cors": "2.8.4",
     "debug": "^4.1.1",
     "graphql": "^14.5.3",
