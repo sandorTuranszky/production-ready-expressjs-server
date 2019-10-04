@@ -119,3 +119,56 @@ patch:
         patched: '2019-07-08T15:37:38.255Z'
     - snyk > snyk-nuget-plugin > dotnet-deps-parser > lodash:
         patched: '2019-08-29T14:01:40.005Z'
+  SNYK-JS-HTTPSPROXYAGENT-469131:
+    - npm > libnpm > npm-registry-fetch > make-fetch-happen > https-proxy-agent:
+        patched: '2019-10-04T02:40:18.703Z'
+    - '@sentry/node > https-proxy-agent':
+        patched: '2019-10-04T02:40:18.703Z'
+    - node-mailjet > superagent-proxy > proxy-agent > https-proxy-agent:
+        patched: '2019-10-04T02:40:18.703Z'
+    - snyk > proxy-agent > pac-proxy-agent > https-proxy-agent:
+        patched: '2019-10-04T02:40:18.703Z'
+    - node-mailjet > superagent-proxy > proxy-agent > pac-proxy-agent > https-proxy-agent:
+        patched: '2019-10-04T02:40:18.703Z'
+    - npm > pacote > make-fetch-happen > https-proxy-agent:
+        patched: '2019-10-04T02:40:18.703Z'
+    - npm > npm-registry-fetch > make-fetch-happen > https-proxy-agent:
+        patched: '2019-10-04T02:40:18.703Z'
+    - npm > libnpmaccess > npm-registry-fetch > make-fetch-happen > https-proxy-agent:
+        patched: '2019-10-04T02:40:18.703Z'
+    - npm > libnpmhook > npm-registry-fetch > make-fetch-happen > https-proxy-agent:
+        patched: '2019-10-04T02:40:18.703Z'
+    - npm > libnpmorg > npm-registry-fetch > make-fetch-happen > https-proxy-agent:
+        patched: '2019-10-04T02:40:18.703Z'
+    - npm > libnpmsearch > npm-registry-fetch > make-fetch-happen > https-proxy-agent:
+        patched: '2019-10-04T02:40:18.703Z'
+    - npm > pacote > npm-registry-fetch > make-fetch-happen > https-proxy-agent:
+        patched: '2019-10-04T02:40:18.703Z'
+    - npm > npm-profile > npm-registry-fetch > make-fetch-happen > https-proxy-agent:
+        patched: '2019-10-04T02:40:18.703Z'
+    - snyk > proxy-agent > https-proxy-agent:
+        patched: '2019-10-04T02:40:18.703Z'
+    - npm > libnpm > pacote > make-fetch-happen > https-proxy-agent:
+        patched: '2019-10-04T02:40:18.703Z'
+    - npm > libcipm > pacote > make-fetch-happen > https-proxy-agent:
+        patched: '2019-10-04T02:40:18.703Z'
+    - npm > libnpmteam > npm-registry-fetch > make-fetch-happen > https-proxy-agent:
+        patched: '2019-10-04T02:40:18.703Z'
+    - npm > libnpm > libnpmteam > npm-registry-fetch > make-fetch-happen > https-proxy-agent:
+        patched: '2019-10-04T02:40:18.703Z'
+    - npm > libnpm > libnpmaccess > npm-registry-fetch > make-fetch-happen > https-proxy-agent:
+        patched: '2019-10-04T02:40:18.703Z'
+    - npm > libnpm > npm-profile > npm-registry-fetch > make-fetch-happen > https-proxy-agent:
+        patched: '2019-10-04T02:40:18.703Z'
+    - npm > libnpm > libnpmorg > npm-registry-fetch > make-fetch-happen > https-proxy-agent:
+        patched: '2019-10-04T02:40:18.703Z'
+    - npm > libcipm > pacote > npm-registry-fetch > make-fetch-happen > https-proxy-agent:
+        patched: '2019-10-04T02:40:18.703Z'
+    - npm > libnpm > libnpmpublish > npm-registry-fetch > make-fetch-happen > https-proxy-agent:
+        patched: '2019-10-04T02:40:18.703Z'
+    - npm > libnpm > pacote > npm-registry-fetch > make-fetch-happen > https-proxy-agent:
+        patched: '2019-10-04T02:40:18.703Z'
+    - npm > libnpm > libnpmhook > npm-registry-fetch > make-fetch-happen > https-proxy-agent:
+        patched: '2019-10-04T02:40:18.703Z'
+    - npm > libnpm > libnpmsearch > npm-registry-fetch > make-fetch-happen > https-proxy-agent:
+        patched: '2019-10-04T02:40:18.703Z'
