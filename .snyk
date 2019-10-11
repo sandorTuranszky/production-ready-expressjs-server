@@ -119,3 +119,11 @@ patch:
         patched: '2019-07-08T15:37:38.255Z'
     - snyk > snyk-nuget-plugin > dotnet-deps-parser > lodash:
         patched: '2019-08-29T14:01:40.005Z'
+    - snyk > @snyk/snyk-cocoapods-plugin > @snyk/dep-graph > lodash:
+        patched: '2019-10-11T05:23:24.744Z'
+    - snyk > @snyk/snyk-cocoapods-plugin > @snyk/cocoapods-lockfile-parser > @snyk/dep-graph > lodash:
+        patched: '2019-10-11T05:23:24.744Z'
+    - snyk > @snyk/snyk-cocoapods-plugin > @snyk/dep-graph > graphlib > lodash:
+        patched: '2019-10-11T05:23:24.744Z'
+    - snyk > @snyk/snyk-cocoapods-plugin > @snyk/cocoapods-lockfile-parser > @snyk/dep-graph > graphlib > lodash:
+        patched: '2019-10-11T05:23:24.744Z'
