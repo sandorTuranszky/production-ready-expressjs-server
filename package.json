@@ -1,6 +1,6 @@
 {
   "name": "production-ready-expressjs-server",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "engines": {
     "node": ">=8.12.0"
   },
