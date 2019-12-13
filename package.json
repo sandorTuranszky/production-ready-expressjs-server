@@ -69,7 +69,7 @@
     "mongoose": "^5.7.5",
     "morgan": "^1.9.1",
     "node-mailjet": "^3.3.1",
-    "npm": "^6.13.0",
+    "npm": "^6.13.4",
     "path": "^0.12.7",
     "prisma-binding": "^2.3.16",
     "redis": "^2.8.0",
