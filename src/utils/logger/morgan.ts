@@ -1,9 +1,10 @@
 'use strict';
 
-const morgan = require('morgan');
-const winston = require('./winston');
+import morgan, { Options } from 'morgan';
+import * as winston from './winston';
+import { Request, Response, NextFunction } from 'express';
 
-const stderrStream = (req, res, next) => {
+export const stderrStream = (req: Request, res: Response, next: NextFunction) => {
   morgan('combined', {
     skip() {
       /* istanbul ignore next line */
@@ -14,7 +15,7 @@ const stderrStream = (req, res, next) => {
   next();
 };
 
-const stdoutStream = (req, res, next) => {
+export const stdoutStream = (req: Request, res: Response, next: NextFunction) => {
   morgan('combined', {
     skip() {
       /* istanbul ignore next line */
@@ -23,9 +24,4 @@ const stdoutStream = (req, res, next) => {
     stream: winston.stream.stdout,
   });
   next();
-};
-
-module.exports = {
-  stderrStream,
-  stdoutStream,
 };

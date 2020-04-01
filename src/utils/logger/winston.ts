@@ -1,16 +1,16 @@
 'use strict';
 
-const appRoot = require('app-root-path');
-const { createLogger, transports, format } = require('winston');
+import config from 'config';
+import appRoot from 'app-root-path';
+import { createLogger, transports, format } from 'winston';
 
 const { combine, prettyPrint } = format;
-const config = require('config');
 
 /**
  * Define the custom settings for each transport (file, console)
  */
 const options = {
-  ...(config.app.logging.file && {
+  ...(config.get('app.logging.file') && {
     file: {
       level: 'info',
       filename: `${appRoot}/logs/app.log`,
@@ -32,7 +32,7 @@ const options = {
 /**
  * Instantiate a new Winston Logger with the settings defined above
  */
-const logger = createLogger({
+export const logger = createLogger({
   format: combine(
     format.timestamp({
       format: 'YYYY-MM-DD hh:mm:ss',
@@ -41,7 +41,7 @@ const logger = createLogger({
   ),
   transports: [
     /* istanbul ignore next line */
-    ...(config.app.logging.file ? [new transports.File(options.file)] : []),
+    ...(config.get(app.logging.file) ? [new transports.File(options.file)] : []),
     new transports.Console(options.console),
   ],
   exitOnError: false, // Do not exit on handled exceptions
@@ -50,10 +50,11 @@ const logger = createLogger({
 /**
  * Create a 'stdout/stderr' stream object with a 'write' function that will be used by `morgan`
  */
-logger.stream = {
+
+export const stream = {
   stdout: {
     // eslint-disable-next-line no-unused-vars
-    write(message, encoding) {
+    write(message: any) {
       // Use the 'info' log level so the output will be picked up
       // By both transports (file and console)
       logger.info(message);
@@ -61,12 +62,10 @@ logger.stream = {
   },
   stderr: {
     // eslint-disable-next-line no-unused-vars
-    write(message, encoding) {
+    write(message: any) {
       // Use the 'error' log level so the output will be picked up
       // By both transports (file and console)
       logger.error(message);
     },
   },
 };
-
-module.exports = logger;
