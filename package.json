@@ -62,7 +62,7 @@
     "express": "4.17.1",
     "graphql": "^14.6.0",
     "graphql-import": "^0.7.1",
-    "helmet": "^3.22.0",
+    "helmet": "^3.23.3",
     "http-errors": "^1.7.3",
     "jsonwebtoken": "^8.5.1",
     "kue": "^0.11.6",
