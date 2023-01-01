@@ -55,7 +55,7 @@
     "bcryptjs": "^2.4.3",
     "body-parser-graphql": "^1.1.0",
     "boom": "^7.2.0",
-    "config": "^2.0.1",
+    "config": "^3.3.8",
     "cookie-parser": "^1.4.5",
     "cors": "2.8.5",
     "debug": "^4.1.1",
