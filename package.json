@@ -50,7 +50,7 @@
   },
   "dependencies": {
     "@sentry/node": "5.10.2",
-    "apollo-server-express": "^2.19.0",
+    "apollo-server-express": "^3.13.0",
     "app-root-path": "^2.2.1",
     "bcryptjs": "^2.4.3",
     "body-parser-graphql": "^1.1.0",
@@ -61,7 +61,7 @@
     "debug": "^4.1.1",
     "express": "4.17.1",
     "graphql": "^14.6.0",
-    "graphql-import": "^0.7.1",
+    "graphql-import": "^1.0.2",
     "helmet": "^3.22.0",
     "http-errors": "^1.7.3",
     "jsonwebtoken": "^8.5.1",
